@@ -2,33 +2,33 @@
 # format : V num_sommet nom_sommer
 #          E num_sommet1 num_sommet1 temps_en_secondes
 V 0000 Abbesses
-V 0001 Alexandre Dumas
+V 0001 2 Alexandre Dumas
 V 0002 Alma Marceau
 V 0003 Alésia
-V 0004 Anatole France
-V 0005 Anvers
+V 0004 3 Anatole France
+V 0005 2 Anvers
 V 0006 1 Argentine
 V 0007 Arts et Métiers
 V 0008 Arts et Métiers
 V 0009 Assemblée Nationale
 V 0010 Aubervilliers-Pantin, Quatre Chemins
 V 0011 Avenue Émile Zola
-V 0012 Avron
-V 0013 Barbès Rochechouart
-V 0014 Barbès Rochechouart
+V 0012 2 Avron
+V 0013 2 Barbès Rochechouart
+V 0014 4 Barbès Rochechouart
 V 0015 Basilique de Saint-Denis
 V 0016 1 Bastille
 V 0017 5 Bastille
 V 0018 8 Bastille
 V 0019 Bel Air
-V 0020 Belleville
-V 0021 Belleville
+V 0020 2 Belleville
+V 0021 11 Belleville
 V 0022 Bercy
 V 0023 Bercy
 V 0024 Bibliothèque François Mitterand
 V 0025 Billancourt
 V 0026 Bir-Hakeim
-V 0027 Blanche
+V 0027 2 Blanche
 V 0028 Bobigny, Pablo Picasso
 V 0029 Bobigny-Pantin, Raymond Queneau
 V 0030 Boissière
@@ -44,7 +44,7 @@ V 0039 Brochant
 V 0040 Bréguet-Sabin
 V 0041 Buttes Chaumont
 V 0042 Buzenval
-V 0043 Bérault
+V 0043 1 Bérault
 V 0044 Cadet
 V 0045 Cambronne
 V 0046 Campo-Formio
@@ -67,7 +67,7 @@ V 0062 Chevaleret
 V 0063 Château Landon
 V 0064 Château Rouge
 V 0065 Château d'Eau
-V 0066 Château de Vincennes
+V 0066 -1 Château de Vincennes
 V 0067 1 Châtelet
 V 0068 4 Châtelet
 V 0069 7 Châtelet
@@ -76,7 +76,7 @@ V 0071 14 Châtelet
 V 0072 Châtillon-Montrouge
 V 0073 Cité
 V 0074 Cluny, La Sorbonne
-V 0075 Colonel Fabien
+V 0075 2 Colonel Fabien
 V 0076 Commerce
 V 0077 1 Concorde
 V 0078 8 Concorde
@@ -86,8 +86,8 @@ V 0081 Corentin Celton
 V 0082 Corentin-Cariou
 V 0083 Corvisart
 V 0084 Cour Saint-Émilion
-V 0085 Courcelles
-V 0086 Couronnes
+V 0085 2 Courcelles
+V 0086 2 Couronnes
 V 0087 Crimée
 V 0088 Croix de Chavaux
 V 0089 Créteil-Préfecture
@@ -104,7 +104,7 @@ V 0099 Duroc
 V 0100 Duroc
 V 0101 Edgar Quinet
 V 0102 1 Esplanade de la Défense
-V 0103 Europe
+V 0103 3 Europe
 V 0104 Exelmans
 V 0105 Faidherbe-Chaligny
 V 0106 Falguière
@@ -131,7 +131,7 @@ V 0126 Garibaldi
 V 0127 1 George V
 V 0128 Glacière
 V 0129 Goncourt
-V 0130 Grande Arche de la Défense
+V 0130 -1 Grande Arche de la Défense
 V 0131 Guy Môquet
 V 0132 Havre Caumartin
 V 0133 Havre Caumartin
@@ -143,16 +143,16 @@ V 0138 Invalides
 V 0139 Iéna
 V 0140 Jacques Bonsergent
 V 0141 Jasmin
-V 0142 Jaurès
-V 0143 Jaurès
-V 0144 Jaurès
+V 0142 2 Jaurès
+V 0143 5 Jaurès
+V 0144 7b Jaurès
 V 0145 Javel
 V 0146 Jourdain
 V 0147 Jules Joffrin
 V 0148 Jussieu
 V 0149 Jussieu
 V 0150 Kléber
-V 0151 La Chapelle
+V 0151 2 La Chapelle
 V 0152 La Courneuve, 8 Mai 1945
 V 0153 La Fourche
 V 0154 La Motte Picquet, Grenelle
@@ -172,7 +172,7 @@ V 0167 Liberté
 V 0168 Liège
 V 0169 Louis Blanc
 V 0170 Louis Blanc
-V 0171 Louise Michel
+V 0171 3 Louise Michel
 V 0172 Lourmel
 V 0173 1 Louvre, Rivoli
 V 0174 Mabillon
@@ -190,7 +190,7 @@ V 0185 Maisons-Alfort les Juilliottes
 V 0186 Maisons-Alfort, Stade
 V 0187 Malakoff-Plateau de Vanves
 V 0188 Malakoff-Rue Étienne Dolet
-V 0189 Malesherbes
+V 0189 3 Malesherbes
 V 0190 Maraîchers
 V 0191 Marcadet Poissonniers
 V 0192 Marcadet Poissonniers
@@ -205,17 +205,17 @@ V 0200 Michel Bizot
 V 0201 Mirabeau
 V 0202 Miromesnil
 V 0203 Miromesnil
-V 0204 Monceau
+V 0204 2 Monceau
 V 0205 Montgallet
 V 0206 Montparnasse Bienvenue
 V 0207 Montparnasse Bienvenue
 V 0208 Montparnasse Bienvenue
 V 0209 Montparnasse Bienvenue
 V 0210 Mouton-Duvernet
-V 0211 Ménilmontant
+V 0211 2 Ménilmontant
 V 0212 1 Nation
-V 0213 2 Nation
-V 0214 6 Nation
+V 0213 -2 Nation
+V 0214 -6 Nation
 V 0215 9 Nation
 V 0216 Nationale
 V 0217 Notre Dame de Lorette
@@ -236,28 +236,28 @@ V 0231 Pasteur
 V 0232 Pasteur
 V 0233 Pelleport
 V 0234 Pernety
-V 0235 Philippe-Auguste
+V 0235 2 Philippe-Auguste
 V 0236 Picpus
 V 0237 Pierre Curie
-V 0238 Pigalle
-V 0239 Pigalle
+V 0238 2 Pigalle
+V 0239 12 Pigalle
 V 0240 Place Balard
 V 0241 Place Monge
 V 0242 Place d'Italie
 V 0243 Place d'Italie
 V 0244 Place d'Italie
-V 0245 Place de Clichy
-V 0246 Place de Clichy
+V 0245 2 Place de Clichy
+V 0246 13 Place de Clichy
 V 0247 Place des Fêtes
 V 0248 Place des Fêtes
 V 0249 Plaisance
 V 0250 Poissonnière
-V 0251 Pont de Levallois, Bécon
+V 0251 -3 Pont de Levallois, Bécon
 V 0252 1 Pont de Neuilly
 V 0253 Pont de Sèvres
 V 0254 Pont-Marie
 V 0255 Pont-Neuf
-V 0256 Porte Dauphine
+V 0256 -2 Porte Dauphine
 V 0257 Porte Dorée
 V 0258 1 Porte Maillot
 V 0259 Porte d'Auteuil
@@ -265,7 +265,7 @@ V 0260 Porte d'Italie
 V 0261 Porte d'Ivry
 V 0262 Porte d'Orléans
 V 0263 Porte de Bagnolet
-V 0264 Porte de Champerret
+V 0264 3 Porte de Champerret
 V 0265 Porte de Charenton
 V 0266 Porte de Choisy
 V 0267 Porte de Clichy
@@ -276,7 +276,7 @@ V 0271 Porte de Saint-Cloud
 V 0272 Porte de Saint-Ouen
 V 0273 Porte de Vanves
 V 0274 Porte de Versailles
-V 0275 Porte de Vincennes
+V 0275 1 Porte de Vincennes
 V 0276 Porte de la Chapelle
 V 0277 Porte de la Villette
 V 0278 Porte des Lilas
@@ -285,8 +285,8 @@ V 0280 Pré-Saint-Gervais
 V 0281 Pyramides
 V 0282 Pyramides
 V 0283 Pyrénées
-V 0284 Père Lachaise
-V 0285 Père Lachaise
+V 0284 2 Père Lachaise
+V 0285 3 Père Lachaise
 V 0286 Péreire
 V 0287 Quai de la Gare
 V 0288 Quai de la Rapée
@@ -303,7 +303,7 @@ V 0298 Richelieu Drouot
 V 0299 Richelieu Drouot
 V 0300 Riquet
 V 0301 Robespierre
-V 0302 Rome
+V 0302 2 Rome
 V 0303 Rue Montmartre, Grands Boulevards
 V 0304 Rue Montmartre, Grands Boulevards
 V 0305 Rue Saint-Maur
@@ -326,10 +326,10 @@ V 0321 Saint-Francois Xavier
 V 0322 Saint-Georges
 V 0323 Saint-Germain-des-Prés
 V 0324 Saint-Jacques
-V 0325 Saint-Lazare
-V 0326 Saint-Lazare
-V 0327 Saint-Lazare
-V 0328 Saint-Mandé, Tourelle
+V 0325 3 Saint-Lazare
+V 0326 12 Saint-Lazare
+V 0327 13 Saint-Lazare
+V 0328 1 Saint-Mandé, Tourelle
 V 0329 Saint-Marcel
 V 0330 Saint-Michel
 V 0331 1 Saint-Paul, Le Marais
@@ -340,9 +340,9 @@ V 0335 Saint-Sébastien-Froissart
 V 0336 Sentier
 V 0337 Simplon
 V 0338 Solférino
-V 0339 Stalingrad
-V 0340 Stalingrad
-V 0341 Stalingrad
+V 0339 2 Stalingrad
+V 0340 5 Stalingrad
+V 0341 7 Stalingrad
 V 0342 Strasbourg Saint-Denis
 V 0343 Strasbourg Saint-Denis
 V 0344 Strasbourg Saint-Denis
@@ -352,7 +352,7 @@ V 0347 Sèvres Babylone
 V 0348 Sèvres Lecourbe
 V 0349 Ségur
 V 0350 Temple
-V 0351 Ternes
+V 0351 2 Ternes
 V 0352 Tolbiac
 V 0353 Trinité d'Estienne d'Orves
 V 0354 Trocadéro
@@ -363,15 +363,15 @@ V 0358 Vaneau
 V 0359 Varenne
 V 0360 Vaugirard
 V 0361 Vavin
-V 0362 Victor Hugo
+V 0362 2 Victor Hugo
 V 0363 Villejuif, Louis Aragon
 V 0364 Villejuif, Léo Lagrange
 V 0365 Villejuif, P. Vaillant Couturier
-V 0366 Villiers
-V 0367 Villiers
+V 0366 2 Villiers
+V 0367 3 Villiers
 V 0368 Volontaires
 V 0369 Voltaire
-V 0370 Wagram
+V 0370 3 Wagram
 V 0371 École Militaire
 V 0372 École Vétérinaire de Maisons-Alfort
 V 0373 Église d'Auteuil
