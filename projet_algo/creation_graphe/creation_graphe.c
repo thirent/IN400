@@ -5,7 +5,7 @@
 #define nbr_station 376
 #define t_max 200
 
-int* creation_graphe()
+int** creation_graphe()
 {
 	FILE* metro = fopen("metro.txt","r");
 	
@@ -13,10 +13,10 @@ int* creation_graphe()
 	char buf[t_max];
 	char c;
 	
-	int** matrice = calloc(nbr_station*sizeof(int*));
+	int** matrice = calloc(sizeof(int*),nbr_station);
 	for(j=0;j<nbr_station;j++)
 	{
-		matrice[j] = calloc(nbr_station*sizeof(int));
+		matrice[j] = calloc(sizeof(int),nbr_station);
 	}
 	
 	while(fgets(buf,t_max,metro) != NULL)
