@@ -73,9 +73,8 @@ int* terminus()
 	{
 		if(station[i] == 1)
 		{
-			terminus[j] = station[i];
+			terminus[j] = i;
 			j++;
-			printf("%d\n",i);
 		}
 	}
 	
@@ -84,18 +83,13 @@ int* terminus()
 	return terminus;
 }
 
-int prochain_arret(int* traite,int arret)
+int nbr_connection(int arret)
 {
 	FILE* metro = fopen("metro.txt","r");
 	
-	int p_arret;
-	
-	traite[arret] = 1;
-	
-	
+	int res=0;
 	
 	char buf[t_max];
-	char nom[t_max],nom1[t_max],nom2[t_max];
 	char c;
 	int j,k,l;
 	
@@ -105,7 +99,53 @@ int prochain_arret(int* traite,int arret)
 		{
 			sscanf(buf,"%c %d %d %d",&c,&j,&k,&l);
 			
+			if(((arret == j)||(arret == k))&&(!meme_gare(j,k)))
+			{
+				res++;
+			}
+		}
+	}
+	
+	fclose(metro);
+	
+	return res;
+}
+
+void prochain_arret(FILE** ligne,int* traite,int arret)
+{
+	FILE* metro = fopen("metro.txt","r");
+	
+	traite[arret] = 1;
+	
+	char buf[t_max];
+	char c;
+	int j,k,l;
+	
+	int nb_connection = nbr_connection(arret);
+	
+	if(nb_connection > 2) fprintf(*ligne,":");
+	
+	while(fgets(buf,t_max,metro) != NULL)
+	{
+		if(buf[0] == 'E')
+		{
+			sscanf(buf,"%c %d %d %d",&c,&j,&k,&l);
 			
+			if(!meme_gare(j,k))
+			{
+				if((arret == j)&&(!traite[k]))
+				{
+					fprintf(*ligne,"%d ",k);
+					prochain_arret(ligne,traite,k);
+					if(nb_connection > 2) fprintf(*ligne,":");
+				}
+				if((arret == k)&&(!traite[j]))
+				{
+					fprintf(*ligne,"%d ",j);
+					prochain_arret(ligne,traite,j);
+					if(nb_connection > 2) fprintf(*ligne,":");
+				}
+			}
 		}
 	}
 	
@@ -117,21 +157,17 @@ void creation_ligne(int* terminus)
 	FILE* ligne = fopen("resultat_ligne.txt","w+");
 	
 	int traite[nbr_station];
-	int i;
+	int i,j;
 	
 	for(i=0;i<nbr_station;i++)traite[i] = 0;
 	
-	for(i=0;i<nbr_terminus;i++,p_arret=0)
+	for(i=0;i<nbr_terminus;i++)
 	{
-		if(!traite[terminus[i]])
-		{
-			fprintf(ligne,"%d ",terminus[i]);
-			p_arret = prochain_arret(traite,terminus[i]);
-			while(p_arret != -1)
-			{
-				fprintf(ligne,"%d ",p_arret);
-			}
-		}
+		fprintf(ligne,"%d ",terminus[i]);
+		prochain_arret(&ligne,traite,terminus[i]);
+		fprintf(ligne,"\n");
+		
+		for(j=0;j<nbr_station;j++)traite[j] = 0;
 	}
 	
 	fclose(ligne);
@@ -139,8 +175,7 @@ void creation_ligne(int* terminus)
 
 int main()
 {
-	terminus();
-	
+	creation_ligne(terminus());
 	
 	exit(0);
 }
