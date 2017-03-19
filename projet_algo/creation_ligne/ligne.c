@@ -135,13 +135,13 @@ void prochain_arret(FILE** ligne,int* traite,int arret)
 			{
 				if((arret == j)&&(!traite[k]))
 				{
-					fprintf(*ligne,"%d ",k);
+					fprintf(*ligne,"%04d ",k);
 					prochain_arret(ligne,traite,k);
 					if(nb_connection > 2) fprintf(*ligne,":");
 				}
 				if((arret == k)&&(!traite[j]))
 				{
-					fprintf(*ligne,"%d ",j);
+					fprintf(*ligne,"%04d ",j);
 					prochain_arret(ligne,traite,j);
 					if(nb_connection > 2) fprintf(*ligne,":");
 				}
@@ -163,7 +163,7 @@ void creation_ligne(int* terminus)
 	
 	for(i=0;i<nbr_terminus;i++)
 	{
-		fprintf(ligne,"%d ",terminus[i]);
+		fprintf(ligne,"%04d ",terminus[i]);
 		prochain_arret(&ligne,traite,terminus[i]);
 		fprintf(ligne,"\n");
 		

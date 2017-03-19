@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define nbr_station 376
 
@@ -40,7 +41,61 @@ int minimum(unsigned int* distance, int* marque){
 	return res;
 }
 
-int* dijkstra(int** matrice, int depart, int arrivee){
+//~ int* dijkstra(int** matrice, int depart, int arrivee){
+		//~ 
+	//~ unsigned int distance[nbr_station];
+	//~ int pere[nbr_station];
+	//~ int marque[nbr_station];
+	//~ 
+	//~ int i, tmp;
+	//~ 
+	//~ for(i=0;i<nbr_station;i++){
+		//~ distance[i]=4294967295;
+		//~ pere[i]=0;
+		//~ marque[i]=0;
+	//~ }
+	//~ 
+	//~ distance[depart]=0;
+	//~ pere[depart]=-1;
+		//~ 
+	//~ maj_distance(pere,distance,depart,matrice);
+		//~ 
+	//~ while(!t_marque(marque)){
+		//~ maj_distance(pere,distance,minimum(distance,marque),matrice);
+	//~ }
+		//~ 
+	//~ int chemin_tmp[nbr_station];
+	//~ 
+	//~ chemin_tmp[0]=arrivee;
+	//~ tmp=arrivee;
+	//~ i=1;
+	//~ 
+	//~ while(pere[tmp]!=-1){
+		//~ tmp=pere[tmp];
+		//~ chemin_tmp[i]=tmp;
+		//~ i++;
+	//~ }
+	//~ 
+	//~ int* chemin= malloc((i+1)*sizeof(int));
+	//~ 
+	//~ //tmp=i-1;
+	//~ i--;
+	//~ tmp=i;
+	//~ 
+	//~ while(tmp>=0){
+		//~ printf("%d\n",chemin_tmp[tmp]);
+		//~ printf("%d %d %d\n",i,tmp,i-tmp);
+		//~ 
+		//~ chemin[i-tmp]=chemin_tmp[tmp];
+		//~ tmp--;
+	//~ }
+	//~ 
+	//~ chemin[i+1] = ':';
+	//~ 
+	//~ return chemin;
+//~ }
+
+char* dijkstra(int** matrice, int depart, int arrivee){
 		
 	unsigned int distance[nbr_station];
 	int pere[nbr_station];
@@ -75,20 +130,27 @@ int* dijkstra(int** matrice, int depart, int arrivee){
 		i++;
 	}
 	
-	tmp=i-1;
+	int chemin_tmp2[i];
 	
-	int* chemin= malloc(i*sizeof(int));
+	char* chemin = malloc((i*5)*sizeof(char));
+	
+	i--;
+	tmp=i;
 	
 	while(tmp>=0){
-		printf("%d\n",chemin_tmp[tmp]);
 		chemin[i-tmp]=chemin_tmp[tmp];
 		tmp--;
 	}
 	
+	for(tmp=0;tmp<i;tmp++)
+	{
+		sprintf(&chemin[tmp*5],"%d ",chemin_tmp2[i]);
+	}
+	
+	printf("%s\n",chemin);
+	
 	return chemin;
 }
-
-
 
 int main(int argc, char **argv)
 {
