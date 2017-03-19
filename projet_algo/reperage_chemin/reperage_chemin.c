@@ -18,7 +18,6 @@ void reperage_gare(char* gare)
 	while(fgets(buf,t_max,metro) != NULL)
 	{
 		sscanf(buf,"%c %s",&c,num);
-		
 		if((c == 'V')&&(strcmp(num,gare) == 0))
 		{
 			buf[strlen(buf)-1] = '\0';
@@ -33,11 +32,9 @@ void reperage_ligne(char* portion,int ligne)
 {
 	FILE* fic_ligne = fopen("ligne_man.txt","r");
 	
-	printf("%s\n",portion);
-	
 	char gare1[6],gare2[6];
 	char buf[t_max];
-	int i;
+	int i=0;
 	
 	strcpy(gare2,&portion[strlen(portion)/5*5-5]);
 	portion[5] = '\0';
@@ -52,7 +49,7 @@ void reperage_ligne(char* portion,int ligne)
 	while(i != ligne)
 	{
 		fgets(buf,t_max,fic_ligne);
-		i ++;
+		i++;
 	}
 	fgets(buf,t_max,fic_ligne);
 	fgets(buf,t_max,fic_ligne);
@@ -81,7 +78,7 @@ void reperage_chemin(char* chemin,int longueur,char** ligne)
 	
 	while(fgets(buf,t_max,fic_ligne) != NULL) nbr_ligne++;
 	fseek(fic_ligne,0,SEEK_SET);
-	
+		
 	for(i=0;i<nbr_ligne;i+=2)
 	{
 		ligne_len = strlen(ligne[i])/5;
@@ -98,20 +95,13 @@ void reperage_chemin(char* chemin,int longueur,char** ligne)
 					
 					strcpy(buf,n_chaine(chemin,longueur,j));
 					
-					chemin[j] = '\0';
-					
-					//~ printf("%d\n",strlen(chemin)/5 != 0);
-					//~ printf("%s\n",chemin);
-					//~ printf("%d\n",strlen(chemin)/5);
-					//~ printf("%s\n",&chemin[j*5+longueur*5]);
-					//~ printf("%d\n",strlen(&chemin[j*5+longueur*5])/5);
+					chemin[j*5] = '\0';
 										
 					if(strlen(chemin)/5 != 0)reperage_chemin(chemin,strlen(chemin)/5,ligne);
 					
-					//reperage_ligne(n_chaine(chemin,longueur,j),i);
 					reperage_ligne(buf,i);
 					
-					if(strlen(&chemin[j+longueur]) !=5)reperage_chemin(&chemin[j+longueur],strlen(&chemin[j+longueur])/5,ligne);
+					if(strlen(&chemin[j*5+longueur*5]) !=5)reperage_chemin(&chemin[j*5+longueur*5],strlen(&chemin[j+longueur])/5,ligne);
 					
 					k=ligne_len+1-longueur;
 					j=chemin_len+1-longueur;
@@ -121,7 +111,7 @@ void reperage_chemin(char* chemin,int longueur,char** ligne)
 		}
 	}
 	
-	//if((i < nbr_ligne+5)&&(strlen(chemin)/5 != 0))reperage_chemin(chemin,longueur-1,ligne);
+	if((i < nbr_ligne+5)&&(strlen(chemin)/5 != 0))reperage_chemin(chemin,longueur-1,ligne);
 	
 	fclose(fic_ligne);
 }
@@ -158,25 +148,47 @@ int main()
 	//"0134 0270 0226 0160 "
 	
 	char* test = malloc(21*sizeof(char));
+	//~ test[0] = '0';
+	//~ test[1] = '1';
+	//~ test[2] = '3';
+	//~ test[3] = '4';
+	//~ test[4] = ' ';
+	//~ test[5] = '0';
+	//~ test[6] = '2';
+	//~ test[7] = '7';
+	//~ test[8] = '0';
+	//~ test[9] = ' ';
+	//~ test[10] = '0';
+	//~ test[11] = '2';
+	//~ test[12] = '2';
+	//~ test[13] = '6';
+	//~ test[14] = ' ';
+	//~ test[15] = '0';
+	//~ test[16] = '1';
+	//~ test[17] = '6';
+	//~ test[18] = '0';
+	//~ test[19] = ' ';
+	//~ test[20] = '\0';
+	
 	test[0] = '0';
-	test[1] = '1';
-	test[2] = '3';
-	test[3] = '4';
+	test[1] = '3';
+	test[2] = '2';
+	test[3] = '2';
 	test[4] = ' ';
 	test[5] = '0';
 	test[6] = '2';
-	test[7] = '7';
-	test[8] = '0';
+	test[7] = '3';
+	test[8] = '8';
 	test[9] = ' ';
 	test[10] = '0';
 	test[11] = '2';
-	test[12] = '2';
-	test[13] = '6';
+	test[12] = '3';
+	test[13] = '9';
 	test[14] = ' ';
 	test[15] = '0';
-	test[16] = '1';
-	test[17] = '6';
-	test[18] = '0';
+	test[16] = '0';
+	test[17] = '2';
+	test[18] = '7';
 	test[19] = ' ';
 	test[20] = '\0';
 	
