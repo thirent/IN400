@@ -6,14 +6,60 @@
 #define nbr_station 376
 #define t_max 1000
 
-void reperage_gare(int gare)
+void reperage_gare(char* gare)
 {
+	FILE* metro = fopen("metro.txt","r");
 	
+	gare[4]='\0';
+	
+	char buf[t_max];
+	char c,num[5];
+	
+	while(fgets(buf,t_max,metro) != NULL)
+	{
+		sscanf(buf,"%c %s",&c,num);
+		
+		if((c == 'V')&&(strcmp(num,gare) == 0))
+		{
+			buf[strlen(buf)-1] = '\0';
+			printf("%s",&buf[7]);
+		}
+	}
+	
+	fclose(metro);
 }
 
-void reperage_ligne(char* portion)
+void reperage_ligne(char* portion,int ligne)
 {
+	FILE* fic_ligne = fopen("ligne_man.txt","r");
 	
+	printf("%s\n",portion);
+	
+	char gare1[6],gare2[6];
+	char buf[t_max];
+	int i;
+	
+	strcpy(gare2,&portion[strlen(portion)/5*5-5]);
+	portion[5] = '\0';
+	strcpy(gare1,portion);
+	
+	printf("Aller de : ");
+	reperage_gare(gare1);
+	printf(" a : ");
+	reperage_gare(gare2);
+	printf(" sur la ");
+	
+	while(i != ligne)
+	{
+		fgets(buf,t_max,fic_ligne);
+		i ++;
+	}
+	fgets(buf,t_max,fic_ligne);
+	fgets(buf,t_max,fic_ligne);
+	
+	printf("%s\n",buf);
+	
+	fclose(fic_ligne);
 }
 
 char* n_chaine(char* chemin,int longueur,int decalage)
@@ -26,15 +72,9 @@ char* n_chaine(char* chemin,int longueur,int decalage)
 	return n_chemin;
 }
 
-void n_chaine_contraire(char* chemin,int longueur,int decalage)
-{
-	strcpy(&chemin[decalage],&chemin[decalage+longueur]);
-}
-
 void reperage_chemin(char* chemin,int longueur,char** ligne)
 {
 	FILE* fic_ligne = fopen("ligne_man.txt","r");
-	FILE* metro = fopen("metro.txt","r");
 	
 	int i,j,k,chemin_len = strlen(chemin)/5,ligne_len,nbr_ligne = 0;
 	char buf[t_max];
@@ -49,14 +89,29 @@ void reperage_chemin(char* chemin,int longueur,char** ligne)
 		{
 			for(k=0;k<ligne_len+1-longueur;k++)
 			{
-				printf("%s\n",n_chaine(chemin,longueur,j));
-				printf("%s\n",n_chaine(ligne[i],longueur,k));
+				//~ printf("%s\n",n_chaine(chemin,longueur,j));
+				//~ printf("%s\n",n_chaine(ligne[i],longueur,k));
 				if(strcmp(n_chaine(chemin,longueur,j),n_chaine(ligne[i],longueur,k)) == 0)
 				{
-					reperage_ligne(n_chaine(chemin,longueur,j));
-					n_chaine_contraire(chemin,longueur,j);
+					//~ printf("%s\n",n_chaine(chemin,longueur,j));
+					//~ printf("%s\n",n_chaine(ligne[i],longueur,k));
 					
+					strcpy(buf,n_chaine(chemin,longueur,j));
+					
+					chemin[j] = '\0';
+					
+					//~ printf("%d\n",strlen(chemin)/5 != 0);
+					//~ printf("%s\n",chemin);
+					//~ printf("%d\n",strlen(chemin)/5);
+					//~ printf("%s\n",&chemin[j*5+longueur*5]);
+					//~ printf("%d\n",strlen(&chemin[j*5+longueur*5])/5);
+										
 					if(strlen(chemin)/5 != 0)reperage_chemin(chemin,strlen(chemin)/5,ligne);
+					
+					//reperage_ligne(n_chaine(chemin,longueur,j),i);
+					reperage_ligne(buf,i);
+					
+					if(strlen(&chemin[j+longueur]) !=5)reperage_chemin(&chemin[j+longueur],strlen(&chemin[j+longueur])/5,ligne);
 					
 					k=ligne_len+1-longueur;
 					j=chemin_len+1-longueur;
@@ -66,10 +121,9 @@ void reperage_chemin(char* chemin,int longueur,char** ligne)
 		}
 	}
 	
-	if(i < nbr_ligne+5)reperage_chemin(chemin,longueur-1,ligne);
+	//if((i < nbr_ligne+5)&&(strlen(chemin)/5 != 0))reperage_chemin(chemin,longueur-1,ligne);
 	
 	fclose(fic_ligne);
-	fclose(metro);
 }
 
 char** recup_ligne()
@@ -101,7 +155,32 @@ char** recup_ligne()
 
 int main()
 {
-	reperage_chemin("0134 0270 0226 0160 0143 0340 0125 ",35,recup_ligne());
+	//"0134 0270 0226 0160 "
 	
-	exit(0);
+	char* test = malloc(21*sizeof(char));
+	test[0] = '0';
+	test[1] = '1';
+	test[2] = '3';
+	test[3] = '4';
+	test[4] = ' ';
+	test[5] = '0';
+	test[6] = '2';
+	test[7] = '7';
+	test[8] = '0';
+	test[9] = ' ';
+	test[10] = '0';
+	test[11] = '2';
+	test[12] = '2';
+	test[13] = '6';
+	test[14] = ' ';
+	test[15] = '0';
+	test[16] = '1';
+	test[17] = '6';
+	test[18] = '0';
+	test[19] = ' ';
+	test[20] = '\0';
+	
+	reperage_chemin(test,strlen(test)/5,recup_ligne());
+	
+	return 0;
 }
