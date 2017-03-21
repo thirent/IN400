@@ -9,7 +9,7 @@
 
 void demande_coordonnees()
 {
-	FILE* coordonnees = fopen("coordonnees.txt","w+");
+	FILE* coordonnees;
 	FILE* metro = fopen("metro.txt","r");
 	
 	SDL_Init(SDL_INIT_VIDEO);
@@ -25,6 +25,29 @@ void demande_coordonnees()
 	int continuer = 1;
 	
 	buf2[8] = '\0';
+	
+	if((coordonnees = fopen("coordonnees.txt","r")) == NULL)
+	{
+		coordonnees = fopen("coordonnees.txt","w+");
+	}
+	else
+	{
+		fclose(coordonnees);
+		coordonnees = fopen("coordonnees.txt","a+");
+		
+		fseek(coordonnees,0,SEEK_SET);
+		
+		while(fgets(buf1,t_max,coordonnees) != NULL)
+		{
+			fgets(buf1,t_max,metro);printf("%s\n",buf1);
+			sscanf(buf1,"%c",&c);
+			while(c != 'V')
+			{
+				fgets(buf1,t_max,metro);printf("%s\n",buf1);
+				sscanf(buf1,"%c",&c);
+			}
+		}
+	}
 	
 	while(fgets(buf1,t_max,metro) != NULL)
 	{
