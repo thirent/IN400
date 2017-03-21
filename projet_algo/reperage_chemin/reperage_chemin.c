@@ -70,7 +70,7 @@ char* n_chaine(char* chemin,int longueur,int decalage)
 }
 
 void reperage_chemin(char* chemin,int longueur,char** ligne)
-{
+{	
 	FILE* fic_ligne = fopen("ligne_man.txt","r");
 	
 	int i,j,k,chemin_len = strlen(chemin)/5,ligne_len,nbr_ligne = 0;

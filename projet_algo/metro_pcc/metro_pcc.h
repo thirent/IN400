@@ -8,3 +8,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+
+void lancement1();
+void lancement2();

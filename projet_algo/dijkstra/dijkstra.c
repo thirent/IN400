@@ -95,8 +95,8 @@ int minimum(unsigned int* distance, int* marque){
 	//~ return chemin;
 //~ }
 
-char* dijkstra(int** matrice, int depart, int arrivee)
-{
+char* dijkstra(int** matrice, int depart, int arrivee,int* temps)
+{	
 	unsigned int distance[nbr_station];
 	int pere[nbr_station];
 	int marque[nbr_station];
@@ -108,7 +108,7 @@ char* dijkstra(int** matrice, int depart, int arrivee)
 		pere[i]=0;
 		marque[i]=0;
 	}
-	
+		
 	distance[depart]=0;
 	pere[depart]=-1;
 		
@@ -131,23 +131,24 @@ char* dijkstra(int** matrice, int depart, int arrivee)
 	}
 	
 	int chemin_tmp2[i];
-	
+		
 	char* chemin = malloc((i*5)*sizeof(char));
 	
-	i--;
-	tmp=i;
+	tmp=i-1;
 	
 	while(tmp>=0){
-		chemin[i-tmp]=chemin_tmp[tmp];
+		chemin_tmp2[i-tmp-1]=chemin_tmp[tmp];
 		tmp--;
 	}
 	
 	for(tmp=0;tmp<i;tmp++)
 	{
-		sprintf(&chemin[tmp*5],"%d ",chemin_tmp2[i]);
+		sprintf(&chemin[tmp*5],"%04d ",chemin_tmp2[tmp]);
 	}
+		
+	//printf("%s\n",chemin);
 	
-	printf("%s\n",chemin);
+	*temps = distance[arrivee];
 	
 	return chemin;
 }

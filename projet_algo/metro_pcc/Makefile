@@ -1,8 +1,11 @@
 all: pcc
 	
 
-pcc: ./compil/affichage.o ./compil/creation_graphe.o ./compil/dijkstra.o ./compil/recuperation_clic.o ./compil/reperage_chemin.o ./compil/metro_pcc.o
-		gcc -Wall -g -o metro_pcc ./compil/affichage.o ./compil/creation_graphe.o ./compil/dijkstra.o ./compil/recuperation_clic.o ./compil/reperage_chemin.o ./compil/metro_pcc.o `sdl-config --libs` -lm -lSDL_ttf
+pcc: vide ./compil/affichage.o ./compil/creation_graphe.o ./compil/dijkstra.o ./compil/recuperation_clic.o ./compil/reperage_chemin.o ./compil/metro_pcc.o
+		gcc -Wall -g -o ./compil/metro_pcc ./compil/affichage.o ./compil/creation_graphe.o ./compil/dijkstra.o ./compil/recuperation_clic.o ./compil/reperage_chemin.o ./compil/metro_pcc.o `sdl-config --libs` -lm -lSDL_ttf
+	
+vide:
+	clear
 	
 
 ./compil/affichage.o: ../affichage/affichage.c
@@ -29,9 +32,16 @@ pcc: ./compil/affichage.o ./compil/creation_graphe.o ./compil/dijkstra.o ./compi
 	gcc -c -o ./compil/metro_pcc.o metro_pcc.c
 	
 
-run: all
-	./metro_pcc
+run1: all
+	clear
+	./compil/metro_pcc 1
 	
+
+run2: all
+	clear
+	./compil/metro_pcc 2
+	
+
 clean:
 	rm -f ./compil/*.o
-	rm -f metro_pcc
+	rm -f ./compil/metro_pcc

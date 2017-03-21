@@ -1,1 +1,1 @@
-char* dijkstra(int** matrice, int depart, int arrivee);
+char* dijkstra(int** matrice, int depart, int arrivee,int* temps);
