@@ -1,8 +1,12 @@
-all: coordonnees.o
-	gcc -Wall -g -o coordonnees coordonnees.o `sdl-config --libs` -lm -lSDL_ttf
+all: ./compil/coordonnees.o
+	gcc -Wall -g -o coordonnees ./compil/coordonnees.o `sdl-config --libs` -lm -lSDL_ttf
 
-coordonnees.o: coordonnees.c
-	gcc -c `sdl-config --cflags` coordonnees.c
+./compil/coordonnees.o: coordonnees.c
+	gcc -c `sdl-config --cflags` -o ./compil/coordonnees.o coordonnees.c
 
 run:all
 	./coordonnees
+
+clean:
+	rm -f ./compil/*.o
+	rm -f coordonnees

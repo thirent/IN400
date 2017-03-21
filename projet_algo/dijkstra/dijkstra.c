@@ -95,8 +95,8 @@ int minimum(unsigned int* distance, int* marque){
 	//~ return chemin;
 //~ }
 
-char* dijkstra(int** matrice, int depart, int arrivee){
-		
+char* dijkstra(int** matrice, int depart, int arrivee)
+{
 	unsigned int distance[nbr_station];
 	int pere[nbr_station];
 	int marque[nbr_station];
@@ -150,11 +150,5 @@ char* dijkstra(int** matrice, int depart, int arrivee){
 	printf("%s\n",chemin);
 	
 	return chemin;
-}
-
-int main(int argc, char **argv)
-{
-	
-	return 0;
 }
 

@@ -142,7 +142,7 @@ char** recup_ligne()
 	
 	return ligne;
 }
-
+/*
 int main()
 {
 	//"0134 0270 0226 0160 "
@@ -196,3 +196,4 @@ int main()
 	
 	return 0;
 }
+*/
