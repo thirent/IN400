@@ -19,8 +19,7 @@ int main(int argc, char** argv)
 void lancement1()
 {
 	int gare1,gare2,temps,heures,minutes,secondes,valide = 0;
-	
-	
+	char* chemin;
 	
 	while(!valide)
 	{
@@ -40,7 +39,7 @@ void lancement1()
 	
 	system("clear");
 	
-	char* chemin = dijkstra(creation_graphe(),gare1,gare2,&temps);
+	chemin = pcc(gare1,gare2,&temps);
 	
 	//printf("%s\n",chemin);
 	
