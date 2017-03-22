@@ -96,12 +96,13 @@ void reperage_chemin(char* chemin,int longueur,char** ligne)
 					strcpy(buf,n_chaine(chemin,longueur,j));
 					
 					chemin[j*5] = '\0';
-										
+					
 					if(strlen(chemin)/5 != 0)reperage_chemin(chemin,strlen(chemin)/5,ligne);
 					
 					reperage_ligne(buf,i);
 					
-					if(strlen(&chemin[j*5+longueur*5]) !=5)reperage_chemin(&chemin[j*5+longueur*5],strlen(&chemin[j+longueur])/5,ligne);
+					//if(strlen(&chemin[j*5+longueur*5]) !=5)reperage_chemin(&chemin[j*5+longueur*5],strlen(&chemin[j+longueur])/5,ligne);
+					if(strlen(&chemin[j*5+longueur*5])/5 !=0)reperage_chemin(&chemin[j*5+longueur*5],strlen(&chemin[j+longueur])/5,ligne);
 					
 					k=ligne_len+1-longueur;
 					j=chemin_len+1-longueur;
