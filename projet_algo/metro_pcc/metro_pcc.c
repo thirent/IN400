@@ -37,10 +37,12 @@ void lancement1()
 		if((gare2 >= 0)&&(gare2 < nbr_station)&&(gare1 != gare2))valide = 1;
 		else printf("le numero que vous avez rentre n est pas compirs entre 0 et 375 ou votre gare d'arrivee et la meme que celle de depart\n");
 	}
-		
+	
+	system("clear");
+	
 	char* chemin = dijkstra(creation_graphe(),gare1,gare2,&temps);
 	
-	printf("%s\n",chemin);
+	//printf("%s\n",chemin);
 	
 	reperage_chemin(chemin,strlen(chemin)/5,recup_ligne());
 		
