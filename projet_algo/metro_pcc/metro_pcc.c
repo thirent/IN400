@@ -50,8 +50,11 @@ void lancement1()
 	minutes = (temps - heures * 60) / 60;
 	secondes = temps - heures * 3600 - minutes * 60;
 	
-	printf("le trajet vous prendra %d h %d m %d s\n",heures,minutes,secondes);
-	
+	printf("le trajet vous prendra ");
+	if(heures)printf("%d h ",heures);
+	if(minutes)printf("%d m ",minutes);
+	if(secondes)printf("%d s",secondes);
+	printf("\n");
 }
 
 void lancement2()
