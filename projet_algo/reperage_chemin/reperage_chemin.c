@@ -90,7 +90,7 @@ void reperage_chemin(char* chemin,int longueur,char** ligne)
 				//~ printf("%s\n",n_chaine(ligne[i],longueur,k));
 				if(strcmp(n_chaine(chemin,longueur,j),n_chaine(ligne[i],longueur,k)) == 0)
 				{
-					//~ printf("%s\n",n_chaine(chemin,longueur,j));
+					printf("%s\n",n_chaine(chemin,longueur,j));
 					//~ printf("%s\n",n_chaine(ligne[i],longueur,k));
 					
 					strcpy(buf,n_chaine(chemin,longueur,j));

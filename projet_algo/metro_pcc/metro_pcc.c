@@ -40,7 +40,7 @@ void lancement1()
 		
 	char* chemin = dijkstra(creation_graphe(),gare1,gare2,&temps);
 	
-	//printf("%s\n",chemin);
+	printf("%s\n",chemin);
 	
 	reperage_chemin(chemin,strlen(chemin)/5,recup_ligne());
 		

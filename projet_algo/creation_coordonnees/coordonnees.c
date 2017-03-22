@@ -187,8 +187,8 @@ void test() //juste un test
 	SDL_Surface* image_z = ScaleSurface(image,2500,2500);
 	SDL_Surface* ecran = SDL_SetVideoMode(image->w,image->h,32,SDL_HWSURFACE);
 	SDL_Rect position;position.x=0;position.y=0;
-	SDL_BlitSurface(image,NULL,ecran,&position);
-	//SDL_BlitSurface(image_z,NULL,ecran,&position);
+	//SDL_BlitSurface(image,NULL,ecran,&position);
+	SDL_BlitSurface(image_z,NULL,ecran,&position);
 	SDL_Flip(ecran);
 	
 	pause();
@@ -199,15 +199,11 @@ void test() //juste un test
 }
 
 
-//WOW OMG UN ZOOM CA MARCHE !!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
 int main()
 {
-	demande_coordonnees();
+	//demande_coordonnees();
 	
-	//test();
+	test();
 	
 	return 0;
 }
