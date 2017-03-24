@@ -58,6 +58,28 @@ void lancement1()
 
 void lancement2()
 {
+	int gare1,gare2,temps,heures,minutes,secondes;
+	char* chemin;
 	
+	deplacement_ecran(1,&gare1,&gare2);
 	
+	//system("clear");
+	
+	chemin = pcc(gare1,gare2,&temps);
+	
+	//printf("%s\n",chemin);
+	
+	deplacement_ecran(0,chemin);
+	
+	reperage_chemin(chemin,strlen(chemin)/5,recup_ligne());
+		
+	heures = temps / 3600;
+	minutes = (temps - heures * 60) / 60;
+	secondes = temps - heures * 3600 - minutes * 60;
+	
+	printf("le trajet vous prendra ");
+	if(heures)printf("%d h ",heures);
+	if(minutes)printf("%d m ",minutes);
+	if(secondes)printf("%d s",secondes);
+	printf("\n");
 }

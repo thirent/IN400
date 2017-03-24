@@ -8,7 +8,7 @@ vide:
 	clear
 	
 
-./compil/affichage.o: ../affichage/affichage.c
+./compil/affichage.o: ../affichage/affichage.c ./compil/recuperation_clic.o ./compil/reperage_chemin.o
 	gcc -c `sdl-config --cflags` -o ./compil/affichage.o ../affichage/affichage.c
 	
 

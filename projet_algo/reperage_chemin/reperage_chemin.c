@@ -6,6 +6,27 @@
 #define nbr_station 376
 #define t_max 1000
 
+void reperage_gare_2(int gare)
+{
+	FILE* metro = fopen("metro.txt","r");
+	
+	char buf[t_max];
+	char c;
+	int n;
+	
+	while(fgets(buf,t_max,metro) != NULL)
+	{
+		sscanf(buf,"%c %d",&c,&n);
+		if((c == 'V')&&(gare == n))
+		{
+			buf[strlen(buf)-1] = '\0';
+			printf("%s",&buf[7]);
+		}
+	}
+	
+	fclose(metro);
+}
+
 void reperage_gare(char* gare)
 {
 	FILE* metro = fopen("metro.txt","r");
