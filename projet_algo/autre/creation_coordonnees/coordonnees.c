@@ -201,9 +201,9 @@ void test() //juste un test
 
 int main()
 {
-	//demande_coordonnees();
+	demande_coordonnees();
 	
-	test();
+	//test();
 	
 	return 0;
 }

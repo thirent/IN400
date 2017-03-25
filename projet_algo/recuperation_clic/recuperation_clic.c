@@ -36,13 +36,8 @@ int reconnaissance_gare(int x,int y)
 	return -1;
 }
 
-int reconnaissance_coord(int x,int y)
-{
-	
-}
-
 void recup_coord(char* gare,int* x,int*y)
-{
+{	
 	FILE* coordonnees = fopen("coordonnees.txt","r");
 	
 	char gare_i[5];

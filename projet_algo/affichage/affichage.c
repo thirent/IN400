@@ -8,6 +8,7 @@
 
 #include "../recuperation_clic/recuperation_clic.h"
 #include "../reperage_chemin/reperage_chemin.h"
+#include "../dijkstra/dijkstra.h"
 
 #define COULEUR 255,0,0,255
 #define cote_rect 16
@@ -127,11 +128,17 @@ void draw_rectangle(SDL_Surface** Surface,int x, int y,int cote)
 	Uint32 pixel;
 	pixel = SDL_MapRGBA((*Surface)->format,COULEUR);
 	
+	//~ printf("%d\n",x-(cote/2));
+	//~ printf("%d\n",x+(cote/2));
+	//~ printf("%d\n",y-(cote/2));
+	//~ printf("%d\n",y+(cote/2));
+	
 	int i,j;
 	for(i=x-(cote/2);i<=x+(cote/2);i++)
 	{
 		for(j=y-(cote/2);j<=y+(cote/2);j++)
 		{
+			//printf("%d %d\n",i,j);
 			definirPixel(*Surface,i,j,pixel);
 		}
 	}
@@ -177,7 +184,7 @@ void draw_line(SDL_Surface** Surface,int x1, int y1, int x2, int y2, int epaisse
 	}
 }
 void dessine_chemin(SDL_Surface** Surface,char* chemin)
-{
+{	
 	int i=0,j,x1,y1,x2,y2;
 	char gare[5];
 	gare[4] = '\0';
@@ -190,9 +197,10 @@ void dessine_chemin(SDL_Surface** Surface,char* chemin)
 	while(strlen(&chemin[i])/5 != 0)
 	{
 		for(j=0;j<4;j++)gare[j] = chemin[i+j];
+		
 		recup_coord(gare,&x2,&y2);
 		
-		draw_rectangle(Surface,x2,y2,cote_rect);
+		draw_rectangle(Surface,x2,y2,cote_rect);		
 		draw_line(Surface,x1,y1,x2,y2,ep_ligne);
 		
 		x1 = x2; y1 = y2;
@@ -303,7 +311,9 @@ void deplacement_ecran(int mode, ...)
 					case SDL_BUTTON_LEFT:
 						if(mode == 1)
 						{
-							*depart = reconnaissance_gare(event.button.x * (zoom + 1),event.button.y * (zoom + 1));
+							//printf("%d %d\n",(event.button.x + position.x) * (zoom + 1),(event.button.y + position.y) * (zoom + 1));
+							
+							*depart = reconnaissance_gare((event.button.x - position.x) * (zoom + 1),(event.button.y - position.y) * (zoom + 1));
 							if(*depart != -1)
 							{
 								printf("vous partez de la gare : ");
@@ -315,8 +325,8 @@ void deplacement_ecran(int mode, ...)
 						}
 						else if(mode == 2)
 						{
-							*arrivee = reconnaissance_gare(event.button.x * (zoom + 1),event.button.y * (zoom + 1));
-							if(*arrivee != -1)
+							*arrivee = reconnaissance_gare((event.button.x - position.x) * (zoom + 1),(event.button.y - position.y) * (zoom + 1));
+							if((*arrivee != -1)&&(!meme_gare(*depart,*arrivee)))
 							{
 								printf("pour allez a la gare : ");
 								reperage_gare_2(*arrivee);
