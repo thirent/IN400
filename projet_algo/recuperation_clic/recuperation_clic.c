@@ -3,6 +3,7 @@
 #include <string.h>
 
 #define t_max 1000
+
 #define rayon 15
 
 int dans_cercle(int x, int y, int centre_x, int centre_y)
@@ -35,3 +36,29 @@ int reconnaissance_gare(int x,int y)
 	return -1;
 }
 
+int reconnaissance_coord(int x,int y)
+{
+	
+}
+
+void recup_coord(char* gare,int* x,int*y)
+{
+	FILE* coordonnees = fopen("coordonnees.txt","r");
+	
+	char gare_i[5];
+	int xi,yi;
+	char buf[t_max];
+	
+	while(fgets(buf,t_max,coordonnees) != NULL)
+	{
+		sscanf(buf,"%s %d %d",gare_i,&xi,&yi);
+		gare_i[4] = '\0';
+		if(!strcmp(gare_i,gare))
+		{
+			*x = xi;
+			*y = yi;
+		}
+	}
+	
+	fclose(coordonnees);
+}

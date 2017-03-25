@@ -57,7 +57,7 @@ void demande_coordonnees()
 			if(!strcmp(&buf1[7],&buf2[7]))
 			{
 				continuer = 0;
-				fprintf(coordonnees,"%s %d %d\n",num,event.button.x,event.button.y);
+				fprintf(coordonnees,"%s %d %d\n",num,(int)(event.button.x*3.0669800235),(int)(event.button.y*3.0327102));
 			}
 			else printf("%s\n",&buf1[7]);
 			while(continuer)
@@ -66,7 +66,7 @@ void demande_coordonnees()
 				if(event.type == SDL_MOUSEBUTTONUP)
 				{
 					continuer = 0;
-					fprintf(coordonnees,"%s %d %d\n",num,event.button.x,event.button.y);
+					fprintf(coordonnees,"%s %d %d\n",num,(int)(event.button.x*3.0669800235),(int)(event.button.y*3.0327102));
 				}
 				if(event.type == SDL_QUIT)goto fin;
 			}

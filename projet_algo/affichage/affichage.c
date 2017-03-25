@@ -8,6 +8,11 @@
 
 #include "../recuperation_clic/recuperation_clic.h"
 #include "../reperage_chemin/reperage_chemin.h"
+
+#define COULEUR 255,0,0,255
+#define cote_rect 16
+#define ep_ligne 10
+
 void definirPixel(SDL_Surface *surface, int x, int y, Uint32 pixel)
 {
     int nbOctetsParPixel = surface->format->BytesPerPixel;
@@ -173,11 +178,26 @@ void draw_line(SDL_Surface** Surface,int x1, int y1, int x2, int y2, int epaisse
 }
 void dessine_chemin(SDL_Surface** Surface,char* chemin)
 {
-	int i=0,x,y;
+	int i=0,j,x1,y1,x2,y2;
+	char gare[5];
+	gare[4] = '\0';
+	
+	for(j=0;j<4;j++)gare[j] = chemin[i+j];
+	recup_coord(gare,&x1,&y1);
+	draw_rectangle(Surface,x1,y1,cote_rect);
+	i += 5;
 	
 	while(strlen(&chemin[i])/5 != 0)
 	{
+		for(j=0;j<4;j++)gare[j] = chemin[i+j];
+		recup_coord(gare,&x2,&y2);
 		
+		draw_rectangle(Surface,x2,y2,cote_rect);
+		draw_line(Surface,x1,y1,x2,y2,ep_ligne);
+		
+		x1 = x2; y1 = y2;
+		
+		i += 5;
 	}
 }
 
