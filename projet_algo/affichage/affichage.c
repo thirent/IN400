@@ -117,9 +117,68 @@ SDL_Surface* dezoom_vf(SDL_Surface *Surface,int z_lvl,int recouvrement)
 	return _ret;
 }
 
+void draw_rectangle(SDL_Surface** Surface,int x, int y,int cote)
+{
+	Uint32 pixel;
+	pixel = SDL_MapRGBA((*Surface)->format,COULEUR);
+	
+	int i,j;
+	for(i=x-(cote/2);i<=x+(cote/2);i++)
+	{
+		for(j=y-(cote/2);j<=y+(cote/2);j++)
+		{
+			definirPixel(*Surface,i,j,pixel);
+		}
+	}
+}
+
+void draw_line(SDL_Surface** Surface,int x1, int y1, int x2, int y2, int epaisseur)
+{
+	int xmin, xmax;
+	int ymin, ymax;
+	int i,j;
+	float a,b,ii,jj;
+	
+	if (x1 < x2) {xmin=x1; xmax=x2;} else{xmin=x2; xmax=x1;}
+	if (y1 < y2) {ymin=y1; ymax=y2;} else{ymin=y2; ymax=y1;}
+	
+	if (xmin==xmax) for (j=ymin;j<=ymax;j++) draw_rectangle(Surface,xmin,j,epaisseur);
+	if (ymin==ymax) for (i=xmin;i<=xmax;i++) draw_rectangle(Surface,i,ymin,epaisseur);
+	
+	if ((xmax-xmin >= ymax-ymin) && (ymax-ymin>0))
+	{
+	a = (float)(y1-y2) / ((float)(x1-x2));
+	b = y1 - a*x1;
+	for (i=xmin;i<=xmax;i++)
+		{
+		jj = a*i+b;
+		j = jj;
+		if ((jj-j) > 0.5) j++;
+		draw_rectangle(Surface,i,j,epaisseur);
+		}
+	}
+	
+	if ((ymax-ymin > xmax-xmin) && (xmax-xmin>0))
+	{
+	a = (float)(y1-y2) / ((float)(x1-x2));
+	b = y1 - a*x1;
+	for (j=ymin;j<=ymax;j++)
+		{
+		ii = (j-b)/a;
+		i = ii;
+		if ((ii-i) > 0.5) i++;
+		draw_rectangle(Surface,i,j,epaisseur);
+		}
+	}
+}
 void dessine_chemin(SDL_Surface** Surface,char* chemin)
 {
+	int i=0,x,y;
 	
+	while(strlen(&chemin[i])/5 != 0)
+	{
+		
+	}
 }
 
 void deplacement_ecran(int mode, ...)
