@@ -208,14 +208,20 @@ void dessine_portions(SDL_Surface** Surface,char** portions)
 {
 	srand(time(NULL));
 	Uint32 pixel;
-	
+	int r=0,g=0,b=0;
 	int i=0;
 	
 	while(portions[i][0] != ':')
 	{
-		pixel = SDL_MapRGB((*Surface)->format,rand()%256,rand()%256,rand()%256);
+		while((r+g+b < 200)||(r+g+b > 255+80*2))
+		{
+			r = rand()%256;
+			g = rand()%256;
+			b = rand()%256;
+		}
+		pixel = SDL_MapRGB((*Surface)->format,r,g,b);
 		dessine_chemin(Surface,portions[i],pixel);
-		i++;
+		i++;r=0;g=0;b=0;
 	}
 }
 
@@ -247,17 +253,7 @@ void deplacement_ecran(int mode, ...)
 	SDL_Surface* image = SDL_LoadBMP("plan-metro-paris-2017.bmp");
 	SDL_Surface* ecran;
 	
-	//if(mode == 0)dessine_chemin(&image,chemin);
 	if(mode == 0)dessine_portions(&image,portions);
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	int z_lvl_max = 1,recouvrement = 0;
 	while((((image->w/(z_lvl_max-recouvrement))+(image->w%(z_lvl_max-recouvrement) != 0)) > resolution_x)||(((image->h/(z_lvl_max-recouvrement))+(image->h%(z_lvl_max-recouvrement) != 0)) > resolution_y)) z_lvl_max++;

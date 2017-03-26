@@ -93,8 +93,6 @@ char* n_chaine(char* chemin,int longueur,int decalage)
 
 char** reperage_chemin(char* chemin, int longueur, char** ligne, int pere, ...)
 {
-	printf("pere : %d\n",pere);
-	
 	FILE* fic_ligne = fopen("ligne_man.txt","r");
 	
 	int i,j,k,chemin_len = strlen(chemin)/5,ligne_len,nbr_ligne = 0;
@@ -112,7 +110,7 @@ char** reperage_chemin(char* chemin, int longueur, char** ligne, int pere, ...)
 		portions = malloc(((longueur*5)+1)*sizeof(char*));
 		for(i=0;i<longueur;i++) portions[i] = malloc(((longueur*5)+1)*sizeof(char));
 	}
-	//printf("%d\n",*indice);
+	
 	if(pere == 0)
 	{
 		va_list va;
@@ -123,8 +121,6 @@ char** reperage_chemin(char* chemin, int longueur, char** ligne, int pere, ...)
 		
 		va_end(va);
 	}
-	
-	//printf("%d\n",*indice);
 	
 	for(i=0;i<nbr_ligne;i+=2)
 	{
@@ -139,37 +135,22 @@ char** reperage_chemin(char* chemin, int longueur, char** ligne, int pere, ...)
 				{
 					//~ printf("%s\n",n_chaine(chemin,longueur,j));
 					//~ printf("%s\n",n_chaine(ligne[i],longueur,k));
-					
-					//printf("0\n");
-					
+										
 					strcpy(buf,n_chaine(chemin,longueur,j));
 					
 					chemin[j*5] = '\0';
 					
-					//printf("%d %d\n",((longueur*5)+1),strlen(buf));
-					
-					printf("%d\n",*indice);
-					
 					strcpy(portions[*indice],buf);
-					//printf("%s\n",portions[*indice]);
 					
 					(*indice) ++;
 					
 					portions[*indice][0] = ':';
 					
-					//printf("1\n");
-					
 					if(strlen(chemin)/5 != 0)reperage_chemin(chemin,strlen(chemin)/5,ligne,0,portions,indice);
 					
-					
-					//printf("2\n");
 					reperage_ligne(buf,i);
 					
-					//printf("3\n");
-					
 					if(strlen(&chemin[j*5+longueur*5])/5 !=0)reperage_chemin(&chemin[j*5+longueur*5],strlen(&chemin[j+longueur])/5,ligne,0,portions,indice);
-					
-					//printf("4\n");
 					
 					k=ligne_len+1-longueur;
 					j=chemin_len+1-longueur;
