@@ -1,10 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <string.h>
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <stdarg.h>
+//#include <string.h>
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL/SDL_ttf.h>
+#include <time.h>
 
 #include "../recuperation_clic/recuperation_clic.h"
 #include "../reperage_chemin/reperage_chemin.h"
@@ -123,28 +124,22 @@ SDL_Surface* dezoom_vf(SDL_Surface *Surface,int z_lvl,int recouvrement)
 	return _ret;
 }
 
-void draw_rectangle(SDL_Surface** Surface,int x, int y,int cote)
+void draw_rectangle(SDL_Surface** Surface,int x, int y,int cote,Uint32 pixel)
 {
-	Uint32 pixel;
-	pixel = SDL_MapRGBA((*Surface)->format,COULEUR);
-	
-	//~ printf("%d\n",x-(cote/2));
-	//~ printf("%d\n",x+(cote/2));
-	//~ printf("%d\n",y-(cote/2));
-	//~ printf("%d\n",y+(cote/2));
+	//Uint32 pixel;
+	//pixel = SDL_MapRGBA((*Surface)->format,COULEUR);
 	
 	int i,j;
 	for(i=x-(cote/2);i<=x+(cote/2);i++)
 	{
 		for(j=y-(cote/2);j<=y+(cote/2);j++)
 		{
-			//printf("%d %d\n",i,j);
 			definirPixel(*Surface,i,j,pixel);
 		}
 	}
 }
 
-void draw_line(SDL_Surface** Surface,int x1, int y1, int x2, int y2, int epaisseur)
+void draw_line(SDL_Surface** Surface,int x1, int y1, int x2, int y2, int epaisseur,Uint32 pixel)
 {
 	int xmin, xmax;
 	int ymin, ymax;
@@ -154,8 +149,8 @@ void draw_line(SDL_Surface** Surface,int x1, int y1, int x2, int y2, int epaisse
 	if (x1 < x2) {xmin=x1; xmax=x2;} else{xmin=x2; xmax=x1;}
 	if (y1 < y2) {ymin=y1; ymax=y2;} else{ymin=y2; ymax=y1;}
 	
-	if (xmin==xmax) for (j=ymin;j<=ymax;j++) draw_rectangle(Surface,xmin,j,epaisseur);
-	if (ymin==ymax) for (i=xmin;i<=xmax;i++) draw_rectangle(Surface,i,ymin,epaisseur);
+	if (xmin==xmax) for (j=ymin;j<=ymax;j++) draw_rectangle(Surface,xmin,j,epaisseur,pixel);
+	if (ymin==ymax) for (i=xmin;i<=xmax;i++) draw_rectangle(Surface,i,ymin,epaisseur,pixel);
 	
 	if ((xmax-xmin >= ymax-ymin) && (ymax-ymin>0))
 	{
@@ -166,7 +161,7 @@ void draw_line(SDL_Surface** Surface,int x1, int y1, int x2, int y2, int epaisse
 		jj = a*i+b;
 		j = jj;
 		if ((jj-j) > 0.5) j++;
-		draw_rectangle(Surface,i,j,epaisseur);
+		draw_rectangle(Surface,i,j,epaisseur,pixel);
 		}
 	}
 	
@@ -179,11 +174,11 @@ void draw_line(SDL_Surface** Surface,int x1, int y1, int x2, int y2, int epaisse
 		ii = (j-b)/a;
 		i = ii;
 		if ((ii-i) > 0.5) i++;
-		draw_rectangle(Surface,i,j,epaisseur);
+		draw_rectangle(Surface,i,j,epaisseur,pixel);
 		}
 	}
 }
-void dessine_chemin(SDL_Surface** Surface,char* chemin)
+void dessine_chemin(SDL_Surface** Surface,char* chemin,Uint32 pixel)
 {	
 	int i=0,j,x1,y1,x2,y2;
 	char gare[5];
@@ -191,7 +186,7 @@ void dessine_chemin(SDL_Surface** Surface,char* chemin)
 	
 	for(j=0;j<4;j++)gare[j] = chemin[i+j];
 	recup_coord(gare,&x1,&y1);
-	draw_rectangle(Surface,x1,y1,cote_rect);
+	draw_rectangle(Surface,x1,y1,cote_rect,pixel);
 	i += 5;
 	
 	while(strlen(&chemin[i])/5 != 0)
@@ -200,8 +195,8 @@ void dessine_chemin(SDL_Surface** Surface,char* chemin)
 		
 		recup_coord(gare,&x2,&y2);
 		
-		draw_rectangle(Surface,x2,y2,cote_rect);		
-		draw_line(Surface,x1,y1,x2,y2,ep_ligne);
+		draw_rectangle(Surface,x2,y2,cote_rect,pixel);		
+		draw_line(Surface,x1,y1,x2,y2,ep_ligne,pixel);
 		
 		x1 = x2; y1 = y2;
 		
@@ -209,16 +204,31 @@ void dessine_chemin(SDL_Surface** Surface,char* chemin)
 	}
 }
 
+void dessine_portions(SDL_Surface** Surface,char** portions)
+{
+	srand(time(NULL));
+	Uint32 pixel;
+	
+	int i=0;
+	
+	while(portions[i][0] != ':')
+	{
+		pixel = SDL_MapRGB((*Surface)->format,rand()%256,rand()%256,rand()%256);
+		dessine_chemin(Surface,portions[i],pixel);
+		i++;
+	}
+}
+
 void deplacement_ecran(int mode, ...)
 {
-	int* depart;int* arrivee;char* chemin;
+	int* depart;int* arrivee;char** portions;
 	
 	va_list va;
 	va_start(va,mode);
 	
 	if(mode == 0)
 	{
-		chemin = va_arg(va,char*);
+		portions = va_arg(va,char**);
 	}
 	if(mode == 1)
 	{
@@ -227,8 +237,6 @@ void deplacement_ecran(int mode, ...)
 	}
 	
 	va_end(va);
-	
-	
 	
 	SDL_Init(SDL_INIT_VIDEO);
 	
@@ -239,7 +247,17 @@ void deplacement_ecran(int mode, ...)
 	SDL_Surface* image = SDL_LoadBMP("plan-metro-paris-2017.bmp");
 	SDL_Surface* ecran;
 	
-	if(mode == 0)dessine_chemin(&image,chemin);
+	//if(mode == 0)dessine_chemin(&image,chemin);
+	if(mode == 0)dessine_portions(&image,portions);
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	int z_lvl_max = 1,recouvrement = 0;
 	while((((image->w/(z_lvl_max-recouvrement))+(image->w%(z_lvl_max-recouvrement) != 0)) > resolution_x)||(((image->h/(z_lvl_max-recouvrement))+(image->h%(z_lvl_max-recouvrement) != 0)) > resolution_y)) z_lvl_max++;
@@ -385,3 +403,4 @@ void deplacement_ecran(int mode, ...)
 	SDL_FreeSurface(ecran);
 	SDL_Quit();
 }
+

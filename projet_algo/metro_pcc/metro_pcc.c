@@ -43,7 +43,7 @@ void lancement1()
 	
 	//printf("%s\n",chemin);
 	
-	reperage_chemin(chemin,strlen(chemin)/5,recup_ligne());
+	reperage_chemin(chemin,strlen(chemin)/5,recup_ligne(),1);
 		
 	heures = temps / 3600;
 	minutes = (temps - heures * 60) / 60;
@@ -72,8 +72,8 @@ void lancement2()
 	
 	//printf("%s\n",chemin);
 	
-	reperage_chemin(chemin,strlen(chemin)/5,recup_ligne());
-		
+	char** portions = reperage_chemin(chemin,strlen(chemin)/5,recup_ligne(),1);
+	
 	heures = temps / 3600;
 	minutes = (temps - heures * 60) / 60;
 	secondes = temps - heures * 3600 - minutes * 60;
@@ -84,5 +84,6 @@ void lancement2()
 	if(secondes)printf("%d s",secondes);
 	printf("\n");
 	
-	deplacement_ecran(0,chemin_cpy);
+	//deplacement_ecran(0,chemin_cpy);
+	deplacement_ecran(0,portions);
 }
