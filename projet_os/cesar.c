@@ -19,7 +19,7 @@ typedef struct
 typedef struct
 {
 	char* chaine;
-	int deb, fin;
+	int deb, fin, decalage;
 }arg;
 
 int nombre_ligne(char* path)
@@ -88,6 +88,23 @@ instruction* recup_inst(char* nom_fic,int nbr_ligne)
 	return inst;
 }
 
+void* decalage_mot(void* argument)
+{
+	arg* a = (arg*)argument;
+	int i,c;
+	
+	for(i=a->deb;i <= a->fin;i++)
+	{
+		c = a->chaine[i];
+		c = (c>90)?c-25:c-25-6;
+		c = (51 + c - a->decalage) % 52;
+		c = (c>25)?c+25:c+25+6;
+		a->chaine[i] = c;
+	}
+	
+	return NULL;
+}
+
 int main(int argc, char** argv)
 {
 	if(argc == 1)exit(0);
@@ -132,14 +149,14 @@ int main(int argc, char** argv)
 		
 		int fd = open(inst[i].path,O_RDONLY),taille_chaine = tmax+1, pos = 0, j, k = 0, nbr_mot_max = tmax, nbr_mot = 0;
 		
-		char* chaine = malloc(taille_chaine*sizeof(char)),;
+		char* chaine = malloc(taille_chaine*sizeof(char));
 		
 		while((reste = read(pipes[i][0],&buf[pos],tmax)) != 0)
 		{
 			pos += reste;
 			if(pos >= taille_chaine -1)
 			{
-				taille _chaine *= 2;
+				taille_chaine *= 2;
 				chaine = realloc(chaine,taille_chaine*sizeof(char));
 			}
 		}
@@ -153,6 +170,7 @@ int main(int argc, char** argv)
 				args[nbr_mot].deb = k;
 				args[nbr_mot].fin = j;
 				args[nbr_mot].chaine = chaine;
+				args[nbr_mot].decalage = inst[i].decalage;
 				
 				//appel des thread avec l'argument : &args[i]
 				
@@ -164,6 +182,9 @@ int main(int argc, char** argv)
 				args = realloc(args,nbr_mot_max * sizeof(arg));
 			}
 		}
+		
+		
+		
 		
 		close(fd);
 	}
