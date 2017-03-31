@@ -5,6 +5,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <pthread.h>
 
 #define tmax 1024
 #define tmot 30
@@ -162,6 +163,7 @@ int main(int argc, char** argv)
 		}
 		
 		arg* args = malloc(nbr_mot * sizeof(arg));
+		pthread_t* tid = malloc(nbr_mot * sizeof(pthread_t));
 		
 		for(j=0;j<pos;j++)
 		{
@@ -174,17 +176,25 @@ int main(int argc, char** argv)
 				
 				//appel des thread avec l'argument : &args[i]
 				
+				pthread_create(&tid[i],NULL,decalage_mot,&args[i]);
+				
+				//appel des thread avec l'argument : &args[i]
+				
+				k=j;
 				nbr_mot++;
 			}
 			if(nbr_mot >= nbr_mot_max)
 			{
 				nbr_mot_max *=2;
 				args = realloc(args,nbr_mot_max * sizeof(arg));
+				tid = realloc(tid,nbr_mot_max * sizeof(pthread_t));
 			}
 		}
 		
-		
-		
+		for(k=0;k<nbr_mot;k++)
+		{
+			pthread_join(tid[k],NULL);
+		}
 		
 		close(fd);
 	}
