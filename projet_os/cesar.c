@@ -18,9 +18,8 @@ typedef struct
 
 typedef struct
 {
-	
-	
-	
+	char* chaine;
+	int deb, fin;
 }arg;
 
 int nombre_ligne(char* path)
@@ -131,7 +130,7 @@ int main(int argc, char** argv)
 	{
 		close(pipes[i][0]);
 		
-		int fd = open(inst[i].path,O_RDONLY),taille_chaine = tmax+1, pos = 0, j, k=0;
+		int fd = open(inst[i].path,O_RDONLY),taille_chaine = tmax+1, pos = 0, j, k = 0, nbr_mot_max = tmax, nbr_mot = 0;
 		
 		char* chaine = malloc(taille_chaine*sizeof(char)),;
 		
@@ -145,13 +144,15 @@ int main(int argc, char** argv)
 			}
 		}
 		
+		arg* args = malloc(nbr_mot * sizeof(arg));
 		
-		for(j=0;j<reste;j++)
+		for(j=0;j<pos;j++)
+		{
+			if(!(((chaine[i] >= 65)&&(chaine[i] <=90)) || ((chaine[i] >= 97)&&(chaine[i] <=122))))
 			{
 				
 			}
-			pos += (reste-1);
-		
+		}		
 		
 		close(fd);
 	}
