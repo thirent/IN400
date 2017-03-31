@@ -69,6 +69,8 @@ instruction* recup_inst(char* nom_fic,int nbr_ligne)
 		inst[i].decalage *= signe;
 		
 		read(fd,&(inst[i].sens),sizeof(char));
+		
+		while((read(fd,&c,sizeof(char)) != 0) && (c != '\n'));
 	}
 	
 	inst[i].path = malloc(sizeof(char));
@@ -101,6 +103,8 @@ int main(int argc, char** argv)
 	}	
 	fin_boucle:
 	
+	
+	
 	if(i == nbr_ligne) //parent
 	{
 		for(i=0;i<nbr_ligne;i++)
@@ -114,6 +118,7 @@ int main(int argc, char** argv)
 			while((reste = read(pipes[i][0],buf,tmax)) != 0) write(STDOUT_FILENO,buf,reste);
 		}
 	}
+	
 	else //fils
 	{
 		close(pipes[i][0]);
