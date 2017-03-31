@@ -7,6 +7,7 @@
 #include <stdio.h>
 
 #define tmax 1024
+#define tmot 30
 
 typedef struct
 {
@@ -14,6 +15,13 @@ typedef struct
 	int decalage;
 	char* path;
 }instruction;
+
+typedef struct
+{
+	
+	
+	
+}arg;
 
 int nombre_ligne(char* path)
 {
@@ -85,7 +93,7 @@ int main(int argc, char** argv)
 {
 	if(argc == 1)exit(0);
 	
-	int nbr_ligne = nombre_ligne(argv[1]),i,reste;
+	int nbr_ligne = nombre_ligne(argv[1]),i,j,k,reste;
 	pid_t pid[nbr_ligne];
 	instruction* inst = recup_inst(argv[1],nbr_ligne);
 	int pipes[nbr_ligne][2];
@@ -96,7 +104,7 @@ int main(int argc, char** argv)
 	{
 		pipe(pipes[i]);
 		
-		printf("%s %d %c\n",inst[i].path,inst[i].decalage,inst[i].sens);
+		//printf("%s %d %c\n",inst[i].path,inst[i].decalage,inst[i].sens);
 		
 		pid[i] = fork();
 		if(pid[i] == 0) goto fin_boucle;
@@ -123,9 +131,13 @@ int main(int argc, char** argv)
 	{
 		close(pipes[i][0]);
 		
+		int fd = open(inst[i].path,O_RDONLY),taille_chaine = 1024;
+		
+		char* chaine = malloc(taille_chaine*sizeof(char));
 		
 		
 		
+		close(fd);
 	}
 	
 	return EXIT_SUCCESS;
