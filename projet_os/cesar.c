@@ -150,9 +150,20 @@ int main(int argc, char** argv)
 		{
 			if(!(((chaine[i] >= 65)&&(chaine[i] <=90)) || ((chaine[i] >= 97)&&(chaine[i] <=122))))
 			{
+				args[nbr_mot].deb = k;
+				args[nbr_mot].fin = j;
+				args[nbr_mot].chaine = chaine;
 				
+				//appel des thread avec l'argument : &args[i]
+				
+				nbr_mot++;
 			}
-		}		
+			if(nbr_mot >= nbr_mot_max)
+			{
+				nbr_mot_max *=2;
+				args = realloc(args,nbr_mot_max * sizeof(arg));
+			}
+		}
 		
 		close(fd);
 	}
