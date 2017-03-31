@@ -4,6 +4,9 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <stdio.h>
+
+#define tmax 1024
 
 typedef struct
 {
@@ -53,7 +56,7 @@ instruction* recup_inst(char* nom_fic,int nbr_ligne)
 			taille++;
 			if(taille == taille_max-1)
 			{
-				inst[i].path = realloc(inst[i].path,taille_max*2);
+				inst[i].path = realloc(inst[i].path,taille_max*sizeof(char)*2);
 				taille_max *= 2;
 			}
 		}
@@ -81,14 +84,18 @@ int main(int argc, char** argv)
 {
 	if(argc == 1)exit(0);
 	
-	int nbr_ligne = nombre_ligne(argv[1]),i;
+	int nbr_ligne = nombre_ligne(argv[1]),i,reste;
 	pid_t pid[nbr_ligne];
 	instruction* inst = recup_inst(argv[1],nbr_ligne);
 	int pipes[nbr_ligne][2];
 	
+	char buf[tmax];
+	
 	for(i=0;i<nbr_ligne;i++)
 	{
 		pipe(pipes[i]);
+		
+		printf("%s %d %c",inst[i].path,inst[i].decalage,inst[i].sens);
 		
 		pid[i] = fork();
 		if(pid[i] == 0) goto fin_boucle;
@@ -103,7 +110,9 @@ int main(int argc, char** argv)
 		}
 		for(i=0;i<nbr_ligne;i++)
 		{
-			waitpid
+			waitpid(pid[i],NULL,0);
+			
+			while((reste = read(pipes[i][0],buf,tmax)) != 0) write(STDOUT_FILENO,buf,reste);
 		}
 	}
 	else //fils
@@ -114,14 +123,6 @@ int main(int argc, char** argv)
 		
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	return EXIT_SUCCESS;
 }
