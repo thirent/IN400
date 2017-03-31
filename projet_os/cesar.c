@@ -93,7 +93,7 @@ int main(int argc, char** argv)
 {
 	if(argc == 1)exit(0);
 	
-	int nbr_ligne = nombre_ligne(argv[1]),i,j,k,reste;
+	int nbr_ligne = nombre_ligne(argv[1]),i,reste;
 	pid_t pid[nbr_ligne];
 	instruction* inst = recup_inst(argv[1],nbr_ligne);
 	int pipes[nbr_ligne][2];
@@ -131,10 +131,26 @@ int main(int argc, char** argv)
 	{
 		close(pipes[i][0]);
 		
-		int fd = open(inst[i].path,O_RDONLY),taille_chaine = 1024;
+		int fd = open(inst[i].path,O_RDONLY),taille_chaine = tmax+1, pos = 0, j, k=0;
 		
-		char* chaine = malloc(taille_chaine*sizeof(char));
+		char* chaine = malloc(taille_chaine*sizeof(char)),;
 		
+		while((reste = read(pipes[i][0],&buf[pos],tmax)) != 0)
+		{
+			pos += reste;
+			if(pos >= taille_chaine -1)
+			{
+				taille _chaine *= 2;
+				chaine = realloc(chaine,taille_chaine*sizeof(char));
+			}
+		}
+		
+		
+		for(j=0;j<reste;j++)
+			{
+				
+			}
+			pos += (reste-1);
 		
 		
 		close(fd);
