@@ -27,6 +27,11 @@ int** creation_graphe()
 			matrice[j][k] = l;
 			matrice[k][j] = l;
 		}
+		if(buf[0] == 'A')
+		{
+			sscanf(buf,"%c %d %d %d",&c,&j,&k,&l);
+			matrice[j][k] = l;
+		}
 	}
 	
 	fclose(metro);
