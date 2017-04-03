@@ -8,7 +8,7 @@
 int main(int argc, char** argv)
 {
 	int a_lib;
-	sscanf(argv[3],"%d",&a_lib);
+	sscanf(argv[4],"%d",&a_lib);
 	
 	char buf[t_max], c;
 	int num1, num2, num3, i;
@@ -69,6 +69,29 @@ int main(int argc, char** argv)
 	
 	fclose(f1);
 	fclose(f2);
+	
+	
+	
+	char n_nom3[strlen(argv[3])+2];
+	strcpy(n_nom3,argv[3]);
+	n_nom3[strlen(argv[3])+2 - 0] = '\0';
+	n_nom3[strlen(argv[3])+2 - 1] = 'm';
+	n_nom3[strlen(argv[3])+2 - 2] = '_';
+	
+	f1 = fopen(argv[3],"r");
+	f2 = fopen(n_nom3,"w");
+	
+	while(fgets(buf,t_max,f1) != NULL)
+	{
+		sscanf(buf,"%d",&num1);
+		
+		fprintf(f2,"%04d",(num1>=a_lib)?num1+1:num1);
+		fprintf(f2,"%s",&buf[4]);
+	}
+	
+	fclose(f1);
+	fclose(f2);
+	
 	
 	exit(EXIT_SUCCESS);
 }

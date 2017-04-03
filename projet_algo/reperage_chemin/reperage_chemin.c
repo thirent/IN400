@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <string.h>
 
-#define nbr_station 376
+#define nbr_station 384
 #define t_max 1000
 
 void reperage_gare_2(int gare)
@@ -133,8 +133,8 @@ char** reperage_chemin(char* chemin, int longueur, char** ligne, int pere, ...)
 				//~ printf("%s\n",n_chaine(ligne[i],longueur,k));
 				if(strcmp(n_chaine(chemin,longueur,j),n_chaine(ligne[i],longueur,k)) == 0)
 				{
-					printf("%s\n",n_chaine(chemin,longueur,j));
-					printf("%s\n",n_chaine(ligne[i],longueur,k));
+					//~ printf("%s\n",n_chaine(chemin,longueur,j));
+					//~ printf("%s\n",n_chaine(ligne[i],longueur,k));
 										
 					strcpy(buf,n_chaine(chemin,longueur,j));
 					

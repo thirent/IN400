@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define nbr_station 376
+#define nbr_station 384
 #define t_max 100
 
 int meme_gare(int n1,int n2)
@@ -148,13 +148,13 @@ char* dijkstra(int** matrice, int depart, int arrivee,int* temps)
 }
 
 char* pcc(int depart, int arrivee,int* temps)
-{
+{	
 	int temps_tmp,tmp,i;
 	char* chemin;
 	char* chemin_tmp;
 	
 	int** matrice = creation_graphe();
-	
+		
 	chemin = dijkstra(matrice,depart,arrivee,temps);
 	
 	i = depart - 1;
@@ -170,7 +170,7 @@ char* pcc(int depart, int arrivee,int* temps)
 		}
 		i--;
 	}
-	
+		
 	i = depart + 1;
 	while((i<nbr_station)&&(meme_gare(i,depart)))
 	{

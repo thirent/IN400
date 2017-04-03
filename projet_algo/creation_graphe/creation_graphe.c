@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define nbr_station 376
+#define nbr_station 384
 #define t_max 200
 
 int** creation_graphe()

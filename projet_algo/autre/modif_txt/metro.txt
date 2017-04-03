@@ -377,6 +377,7 @@ V 0372 École Vétérinaire de Maisons-Alfort
 V 0373 Église d'Auteuil
 V 0374 Église de Pantin
 V 0375 Étienne Marcel
+V 0376 Olympiades
 E 0 238 41
 E 0 159 46
 E 1 12 36
@@ -740,6 +741,7 @@ E 360 368 47
 E 363 365 28
 E 364 365 28
 E 373 196 37
+E 376 24 40
 E 7 8 180
 E 13 14 180
 E 16 18 240

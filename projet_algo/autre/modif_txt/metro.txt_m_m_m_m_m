@@ -1,0 +1,850 @@
+V 0000 Abbesses
+V 0001 Alexandre Dumas
+V 0002 Alma Marceau
+V 0003 Alésia
+V 0004 Anatole France
+V 0005 Anvers
+V 0006 Argentine
+V 0007 Arts et Métiers
+V 0008 Arts et Métiers
+V 0009 Assemblée Nationale
+V 0010 Aubervilliers-Pantin, Quatre Chemins
+V 0011 Avenue Émile Zola
+V 0012 Avron
+V 0013 Barbès Rochechouart
+V 0014 Barbès Rochechouart
+V 0015 Basilique de Saint-Denis
+V 0016 Bastille
+V 0017 Bastille
+V 0018 Bastille
+V 0019 Bel Air
+V 0020 Belleville
+V 0021 Belleville
+V 0022 Bercy
+V 0023 Bercy
+V 0024 Bibliothèque François Mitterand
+V 0025 Billancourt
+V 0026 Bir-Hakeim
+V 0027 Blanche
+V 0028 Bobigny, Pablo Picasso
+V 0029 Bobigny-Pantin, Raymond Queneau
+V 0030 Boissière
+V 0031 Bolivar
+V 0032 Bonne Nouvelle
+V 0033 Bonne Nouvelle
+V 0034 Botzaris
+V 0035 Boucicaut
+V 0036 Boulogne, Jean Jaurès
+V 0037 Boulogne, Pont de Saint-Cloud, Rond Point Rhin et Danube
+V 0038 Bourse
+V 0039 Brochant
+V 0040 Bréguet-Sabin
+V 0041 Buttes Chaumont
+V 0042 Buzenval
+V 0043 Bérault
+V 0044 Cadet
+V 0045 Cambronne
+V 0046 Campo-Formio
+V 0047 Cardinal Lemoine
+V 0048 Carrefour Pleyel
+V 0049 Censier Daubenton
+V 0050 Champs Élysées, Clémenceau
+V 0051 Champs Élysées, Clémenceau
+V 0052 Chardon Lagâche
+V 0053 Charenton-Écoles
+V 0054 Charles Michels
+V 0055 Charles de Gaulle, Étoile
+V 0056 Charles de Gaulle, Étoile
+V 0057 Charles de Gaulle, Étoile
+V 0058 Charonne
+V 0059 Chaussée d'Antin, La Fayette
+V 0060 Chaussée d'Antin, La Fayette
+V 0061 Chemin Vert
+V 0062 Chevaleret
+V 0063 Château Landon
+V 0064 Château Rouge
+V 0065 Château d'Eau
+V 0066 Château de Vincennes
+V 0067 Châtelet
+V 0068 Châtelet
+V 0069 Châtelet
+V 0070 Châtelet
+V 0071 Châtelet
+V 0072 Châtillon-Montrouge
+V 0073 Cité
+V 0074 Cluny, La Sorbonne
+V 0075 Colonel Fabien
+V 0076 Commerce
+V 0077 Concorde
+V 0078 Concorde
+V 0079 Concorde
+V 0080 Convention
+V 0081 Corentin Celton
+V 0082 Corentin-Cariou
+V 0083 Corvisart
+V 0084 Cour Saint-Émilion
+V 0085 Courcelles
+V 0086 Couronnes
+V 0087 Crimée
+V 0088 Croix de Chavaux
+V 0089 Créteil-Préfecture
+V 0090 Créteil-Université
+V 0091 Créteil-l'Echat, Hôpital Henri Mondor
+V 0092 Danube
+V 0093 Daumesnil
+V 0094 Daumesnil
+V 0095 Denfert Rochereau
+V 0096 Denfert Rochereau
+V 0097 Dugommier
+V 0098 Dupleix
+V 0099 Duroc
+V 0100 Duroc
+V 0101 Edgar Quinet
+V 0102 Esplanade de la Défense
+V 0103 Europe
+V 0104 Exelmans
+V 0105 Faidherbe-Chaligny
+V 0106 Falguière
+V 0107 Filles du Calvaire
+V 0108 Fort d'Aubervilliers
+V 0109 Franklin D. Roosevelt
+V 0110 Franklin D. Roosevelt
+V 0111 Félix Faure
+V 0112 Gabriel Péri, Asnières-Gennevilliers
+V 0113 Gaité
+V 0114 Galliéni
+V 0115 Gambetta
+V 0116 Gambetta
+V 0117 Gare d'Austerlitz
+V 0118 Gare d'Austerlitz
+V 0119 Gare de Lyon
+V 0120 Gare de Lyon
+V 0121 Gare de l'Est
+V 0122 Gare de l'Est
+V 0123 Gare de l'Est
+V 0124 Gare du Nord
+V 0125 Gare du Nord
+V 0126 Garibaldi
+V 0127 George V
+V 0128 Glacière
+V 0129 Goncourt
+V 0130 Grande Arche de la Défense
+V 0131 Guy Môquet
+V 0132 Havre Caumartin
+V 0133 Havre Caumartin
+V 0134 Hoche
+V 0135 Hôtel de Ville
+V 0136 Hôtel de Ville
+V 0137 Invalides
+V 0138 Invalides
+V 0139 Iéna
+V 0140 Jacques Bonsergent
+V 0141 Jasmin
+V 0142 Jaurès
+V 0143 Jaurès
+V 0144 Jaurès
+V 0146 Javel
+V 0147 Jourdain
+V 0148 Jules Joffrin
+V 0149 Jussieu
+V 0150 Jussieu
+V 0151 Kléber
+V 0152 La Chapelle
+V 0153 La Courneuve, 8 Mai 1945
+V 0155 La Fourche
+V 0156 La Motte Picquet, Grenelle
+V 0157 La Motte Picquet, Grenelle
+V 0158 La Motte Picquet, Grenelle
+V 0159 La Muette
+V 0160 La Tour-Maubourg
+V 0161 Lamarck Caulaincourt
+V 0162 Laumière
+V 0163 Le Kremlin-Bicêtre
+V 0164 Le Peletier
+V 0165 Ledru Rollin
+V 0166 Les Gobelins
+V 0167 Les Halles
+V 0168 Les Sablons
+V 0169 Liberté
+V 0170 Liège
+V 0171 Louis Blanc
+V 0172 Louis Blanc
+V 0173 Louise Michel
+V 0174 Lourmel
+V 0175 Louvre, Rivoli
+V 0176 Mabillon
+V 0177 Madeleine
+V 0178 Madeleine
+V 0179 Madeleine
+V 0180 Mairie d'Issy
+V 0181 Mairie d'Ivry
+V 0182 Mairie de Clichy
+V 0183 Mairie de Montreuil
+V 0184 Mairie de Saint-Ouen
+V 0185 Mairie des Lilas
+V 0187 Maison Blanche
+V 0188 Maisons-Alfort les Juilliottes
+V 0189 Maisons-Alfort, Stade
+V 0190 Malakoff-Plateau de Vanves
+V 0191 Malakoff-Rue Étienne Dolet
+V 0192 Malesherbes
+V 0193 Maraîchers
+V 0194 Marcadet Poissonniers
+V 0195 Marcadet Poissonniers
+V 0196 Marcel Sembat
+V 0197 Marx Dormoy
+V 0198 Maubert Mutualité
+V 0199 Michel Ange Auteuil
+V 0200 Michel Ange Auteuil
+V 0201 Michel Ange Molitor
+V 0202 Michel Ange Molitor
+V 0203 Michel Bizot
+V 0204 Mirabeau
+V 0205 Miromesnil
+V 0206 Miromesnil
+V 0207 Monceau
+V 0208 Montgallet
+V 0209 Montparnasse Bienvenue
+V 0210 Montparnasse Bienvenue
+V 0211 Montparnasse Bienvenue
+V 0212 Montparnasse Bienvenue
+V 0213 Mouton-Duvernet
+V 0214 Ménilmontant
+V 0215 Nation
+V 0216 Nation
+V 0217 Nation
+V 0218 Nation
+V 0219 Nationale
+V 0220 Notre Dame de Lorette
+V 0221 Notre-Dame-des-Champs
+V 0222 Oberkampf
+V 0223 Oberkampf
+V 0224 Odéon
+V 0225 Odéon
+V 0226 Opéra
+V 0227 Opéra
+V 0228 Opéra
+V 0229 Ourcq
+V 0230 Palais Royal, Musée du Louvre
+V 0231 Palais Royal, Musée du Louvre
+V 0232 Parmentier
+V 0233 Passy
+V 0234 Pasteur
+V 0235 Pasteur
+V 0236 Pelleport
+V 0237 Pernety
+V 0238 Philippe-Auguste
+V 0239 Picpus
+V 0240 Pierre Curie
+V 0241 Pigalle
+V 0242 Pigalle
+V 0243 Place Balard
+V 0244 Place Monge
+V 0245 Place d'Italie
+V 0246 Place d'Italie
+V 0247 Place d'Italie
+V 0248 Place de Clichy
+V 0249 Place de Clichy
+V 0250 Place des Fêtes
+V 0251 Place des Fêtes
+V 0252 Plaisance
+V 0253 Poissonnière
+V 0254 Pont de Levallois, Bécon
+V 0255 Pont de Neuilly
+V 0256 Pont de Sèvres
+V 0257 Pont-Marie
+V 0258 Pont-Neuf
+V 0259 Porte Dauphine
+V 0260 Porte Dorée
+V 0261 Porte Maillot
+V 0262 Porte d'Auteuil
+V 0263 Porte d'Italie
+V 0264 Porte d'Ivry
+V 0265 Porte d'Orléans
+V 0266 Porte de Bagnolet
+V 0267 Porte de Champerret
+V 0268 Porte de Charenton
+V 0269 Porte de Choisy
+V 0270 Porte de Clichy
+V 0271 Porte de Clignancourt
+V 0272 Porte de Montreuil
+V 0273 Porte de Pantin
+V 0274 Porte de Saint-Cloud
+V 0275 Porte de Saint-Ouen
+V 0276 Porte de Vanves
+V 0277 Porte de Versailles
+V 0278 Porte de Vincennes
+V 0279 Porte de la Chapelle
+V 0280 Porte de la Villette
+V 0281 Porte des Lilas
+V 0282 Porte des Lilas
+V 0284 Pré-Saint-Gervais
+V 0285 Pyramides
+V 0286 Pyramides
+V 0287 Pyrénées
+V 0288 Père Lachaise
+V 0289 Père Lachaise
+V 0290 Péreire
+V 0291 Quai de la Gare
+V 0292 Quai de la Rapée
+V 0293 Quatre Septembre
+V 0294 Rambuteau
+V 0295 Ranelagh
+V 0296 Raspail
+V 0297 Raspail
+V 0298 Rennes
+V 0299 Reuilly Diderot
+V 0300 Reuilly Diderot
+V 0301 Richard Lenoir
+V 0302 Richelieu Drouot
+V 0303 Richelieu Drouot
+V 0304 Riquet
+V 0305 Robespierre
+V 0306 Rome
+V 0307 Rue Montmartre, Grands Boulevards
+V 0308 Rue Montmartre, Grands Boulevards
+V 0309 Rue Saint-Maur
+V 0310 Rue de la Pompe
+V 0311 Rue des Boulets
+V 0312 Rue du Bac
+V 0313 Réaumur Sébastopol
+V 0314 Réaumur Sébastopol
+V 0315 République
+V 0316 République
+V 0317 République
+V 0318 République
+V 0319 République
+V 0320 Saint-Ambroise
+V 0321 Saint-Augustin
+V 0322 Saint-Denis-Porte de Paris
+V 0323 Saint-Denis-Université
+V 0324 Saint-Fargeau
+V 0325 Saint-Francois Xavier
+V 0326 Saint-Georges
+V 0327 Saint-Germain-des-Prés
+V 0328 Saint-Jacques
+V 0329 Saint-Lazare
+V 0330 Saint-Lazare
+V 0331 Saint-Lazare
+V 0333 Saint-Mandé, Tourelle
+V 0334 Saint-Marcel
+V 0335 Saint-Michel
+V 0336 Saint-Paul, Le Marais
+V 0337 Saint-Philippe du Roule
+V 0338 Saint-Placide
+V 0339 Saint-Sulpice
+V 0340 Saint-Sébastien-Froissart
+V 0341 Sentier
+V 0342 Simplon
+V 0343 Solférino
+V 0344 Stalingrad
+V 0345 Stalingrad
+V 0346 Stalingrad
+V 0347 Strasbourg Saint-Denis
+V 0348 Strasbourg Saint-Denis
+V 0349 Strasbourg Saint-Denis
+V 0350 Sully Morland
+V 0351 Sèvres Babylone
+V 0352 Sèvres Babylone
+V 0353 Sèvres Lecourbe
+V 0354 Ségur
+V 0355 Temple
+V 0356 Ternes
+V 0357 Tolbiac
+V 0358 Trinité d'Estienne d'Orves
+V 0359 Trocadéro
+V 0360 Trocadéro
+V 0361 Tuileries
+V 0362 Télégraphe
+V 0363 Vaneau
+V 0364 Varenne
+V 0365 Vaugirard
+V 0366 Vavin
+V 0367 Victor Hugo
+V 0368 Villejuif, Louis Aragon
+V 0369 Villejuif, Léo Lagrange
+V 0370 Villejuif, P. Vaillant Couturier
+V 0371 Villiers
+V 0372 Villiers
+V 0373 Volontaires
+V 0374 Voltaire
+V 0375 Wagram
+V 0376 École Militaire
+V 0377 École Vétérinaire de Maisons-Alfort
+V 0378 Église d'Auteuil
+V 0379 Église de Pantin
+V 0380 Étienne Marcel
+V 0381 Olympiades
+E 0 241 41
+E 0 161 46
+E 1 12 36
+E 1 238 44
+E 2 110 69
+E 2 139 50
+E 3 265 33
+E 3 213 41
+E 4 173 43
+E 4 254 35
+E 5 13 67
+E 5 242 54
+E 6 55 56
+E 6 261 46
+E 7 294 39
+E 7 315 79
+E 8 355 38
+E 8 313 58
+E 9 343 28
+E 9 78 62
+E 10 280 42
+E 10 108 36
+E 11 156 32
+E 11 54 41
+E 12 216 42
+E 13 152 57
+E 14 124 46
+E 14 64 28
+E 15 322 37
+E 15 323 73
+E 16 119 98
+E 16 336 62
+E 17 292 89
+E 17 40 41
+E 18 165 32
+E 18 61 56
+E 19 239 31
+E 19 93 33
+E 20 129 48
+E 20 287 38
+E 21 86 46
+E 21 75 51
+E 22 84 39
+E 22 120 81
+E 23 97 35
+E 23 291 57
+E 24 84 51
+E 25 196 42
+E 25 256 35
+E 26 98 31
+E 26 233 64
+E 27 242 64
+E 27 249 59
+E 28 29 79
+E 29 379 46
+E 30 359 24
+E 30 151 44
+E 31 41 28
+E 31 144 36
+E 32 348 54
+E 32 307 41
+E 33 349 52
+E 33 308 41
+E 34 251 36
+E 34 41 57
+E 35 111 34
+E 35 174 40
+E 36 201 105
+E 36 37 39
+E 38 341 35
+E 38 293 38
+E 39 155 38
+E 39 270 46
+E 40 301 37
+E 42 193 42
+E 42 218 35
+E 43 66 41
+E 43 333 57
+E 44 164 54
+E 44 253 64
+E 45 353 43
+E 45 157 35
+E 46 245 63
+E 46 334 46
+E 47 149 46
+E 47 198 41
+E 48 184 66
+E 48 322 60
+E 49 166 42
+E 49 244 40
+E 50 77 54
+E 50 109 62
+E 51 137 62
+E 51 205 69
+E 52 204 20
+E 53 377 47
+E 53 169 33
+E 54 146 51
+E 55 127 60
+E 56 356 59
+E 56 367 75
+E 57 151 35
+E 58 311 31
+E 58 374 31
+E 59 227 72
+E 59 164 53
+E 60 303 63
+E 60 133 45
+E 61 340 28
+E 62 291 53
+E 62 219 48
+E 63 123 44
+E 63 171 57
+E 64 195 57
+E 65 347 41
+E 65 121 57
+E 67 135 87
+E 67 175 51
+E 68 136 85
+E 69 120 287
+E 69 285 131
+E 70 73 45
+E 70 167 66
+E 71 257 73
+E 71 258 37
+E 72 191 52
+E 73 335 46
+E 74 198 44
+E 74 224 52
+E 75 142 93
+E 76 158 59
+E 76 111 30
+E 77 361 57
+E 78 177 41
+E 79 179 41
+E 79 138 71
+E 80 277 41
+E 80 365 49
+E 81 180 43
+E 81 277 43
+E 82 87 32
+E 82 280 47
+E 83 246 36
+E 83 128 49
+E 85 207 47
+E 85 356 46
+E 86 214 37
+E 87 304 43
+E 88 183 44
+E 88 305 47
+E 89 90 29
+E 90 91 26
+E 91 188 27
+E 92 34 37
+E 93 97 45
+E 94 203 27
+E 94 208 39
+E 95 213 48
+E 95 296 37
+E 96 328 52
+E 96 297 42
+E 98 157 69
+E 99 363 31
+E 99 354 54
+E 100 210 113
+E 100 325 59
+E 101 297 43
+E 101 212 36
+E 102 255 35
+E 102 130 37
+E 103 331 44
+E 103 372 30
+E 104 202 62
+E 104 274 40
+E 105 300 42
+E 105 165 47
+E 106 234 29
+E 106 209 36
+E 107 340 49
+E 107 318 49
+E 108 153 29
+E 109 127 59
+E 110 337 37
+E 112 182 71
+E 113 237 36
+E 113 210 47
+E 114 266 72
+E 115 266 39
+E 115 289 70
+E 116 236 50
+E 117 149 59
+E 118 334 60
+E 118 292 30
+E 119 299 41
+E 121 124 67
+E 122 140 103
+E 122 125 59
+E 123 253 51
+E 125 345 107
+E 126 275 37
+E 126 184 42
+E 128 328 42
+E 129 315 49
+E 131 155 72
+E 131 275 63
+E 132 226 68
+E 132 331 40
+E 133 321 49
+E 134 273 47
+E 134 379 53
+E 135 336 65
+E 136 294 73
+E 137 364 54
+E 138 160 57
+E 139 360 46
+E 140 317 47
+E 141 295 37
+E 141 200 49
+E 142 344 27
+E 143 345 29
+E 143 162 44
+E 144 172 46
+E 146 378 55
+E 147 287 33
+E 147 250 50
+E 148 161 44
+E 148 194 49
+E 150 244 57
+E 150 350 79
+E 152 344 93
+E 155 248 64
+E 156 354 33
+E 158 376 46
+E 159 310 36
+E 159 295 49
+E 160 376 66
+E 162 229 40
+E 163 369 28
+E 163 187 39
+E 166 247 60
+E 167 380 33
+E 168 261 38
+E 168 255 37
+E 169 268 31
+E 170 330 49
+E 170 248 28
+E 171 346 54
+E 173 267 49
+E 174 243 35
+E 175 230 34
+E 176 224 31
+E 176 351 72
+E 177 329 144
+E 178 285 71
+E 179 228 88
+E 181 240 37
+E 182 270 91
+E 185 281 51
+E 187 263 31
+E 187 357 36
+E 188 189 26
+E 189 377 33
+E 190 191 34
+E 190 276 46
+E 192 372 49
+E 192 375 35
+E 193 272 27
+E 194 197 67
+E 195 342 36
+E 196 274 38
+E 197 279 67
+E 199 262 47
+E 200 202 28
+E 201 52 42
+E 203 260 51
+E 204 146 46
+E 205 330 112
+E 206 321 53
+E 206 337 40
+E 207 371 51
+E 208 300 38
+E 209 221 45
+E 211 366 42
+E 211 338 48
+E 212 235 54
+E 214 288 49
+E 215 278 86
+E 215 299 64
+E 217 239 42
+E 218 311 60
+E 219 246 55
+E 220 358 29
+E 220 326 37
+E 221 298 38
+E 222 301 50
+E 222 317 81
+E 223 320 35
+E 223 319 80
+E 225 327 42
+E 225 335 31
+E 226 293 43
+E 227 286 80
+E 228 302 75
+E 229 273 39
+E 230 361 38
+E 231 258 53
+E 231 286 49
+E 232 309 43
+E 232 316 64
+E 233 359 62
+E 234 373 40
+E 235 353 46
+E 236 324 33
+E 237 252 38
+E 238 288 44
+E 240 264 37
+E 241 326 27
+E 247 357 37
+E 249 306 37
+E 250 362 23
+E 251 284 57
+E 252 276 35
+E 257 350 75
+E 259 367 37
+E 260 268 26
+E 262 36 84
+E 263 269 37
+E 264 269 46
+E 267 290 41
+E 271 342 39
+E 272 305 35
+E 278 333 41
+E 281 362 59
+E 282 324 37
+E 284 92 43
+E 289 309 61
+E 290 375 35
+E 296 366 38
+E 298 352 46
+E 302 307 46
+E 303 308 48
+E 304 346 46
+E 306 371 53
+E 310 360 33
+E 312 352 29
+E 312 343 33
+E 313 341 65
+E 314 380 28
+E 314 347 67
+E 316 355 37
+E 318 348 98
+E 319 349 107
+E 320 374 27
+E 325 364 23
+E 327 339 47
+E 329 358 69
+E 338 339 32
+E 351 363 33
+E 365 373 47
+E 368 370 28
+E 369 370 28
+E 378 199 37
+E 381 24 40
+E 7 8 180
+E 13 14 180
+E 16 18 240
+E 16 17 240
+E 17 18 240
+E 20 21 180
+E 22 23 180
+E 32 33 180
+E 50 51 180
+E 55 57 240
+E 55 56 240
+E 56 57 240
+E 59 60 180
+E 67 69 300
+E 67 68 300
+E 67 70 300
+E 67 71 300
+E 68 69 300
+E 68 70 300
+E 68 71 300
+E 69 70 300
+E 69 71 300
+E 70 71 300
+E 77 79 240
+E 77 78 240
+E 78 79 240
+E 93 94 180
+E 95 96 180
+E 99 100 180
+E 109 110 180
+E 115 116 180
+E 117 118 180
+E 119 120 180
+E 121 123 240
+E 121 122 240
+E 122 123 240
+E 124 125 180
+E 132 133 180
+E 135 136 180
+E 137 138 180
+E 142 144 240
+E 142 143 240
+E 143 144 240
+E 149 150 180
+E 156 158 240
+E 156 157 240
+E 157 158 240
+E 171 172 180
+E 177 179 240
+E 177 178 240
+E 178 179 240
+E 194 195 180
+E 199 200 180
+E 201 202 180
+E 205 206 180
+E 209 211 300
+E 209 210 300
+E 209 212 300
+E 210 211 300
+E 210 212 300
+E 211 212 300
+E 215 217 300
+E 215 216 300
+E 215 218 300
+E 216 217 300
+E 216 218 300
+E 217 218 300
+E 222 223 180
+E 224 225 180
+E 226 228 240
+E 226 227 240
+E 227 228 240
+E 230 231 180
+E 234 235 180
+E 241 242 180
+E 245 247 240
+E 245 246 240
+E 246 247 240
+E 248 249 180
+E 250 251 180
+E 281 282 180
+E 285 286 180
+E 288 289 180
+E 296 297 180
+E 299 300 180
+E 302 303 180
+E 307 308 180
+E 313 314 180
+E 315 317 300
+E 315 316 300
+E 315 318 300
+E 315 319 300
+E 316 317 300
+E 316 318 300
+E 316 319 300
+E 317 318 300
+E 317 319 300
+E 318 319 300
+E 329 331 240
+E 329 330 240
+E 330 331 240
+E 344 346 240
+E 344 345 240
+E 345 346 240
+E 347 349 240
+E 347 348 240
+E 348 349 240
+E 351 352 180
+E 359 360 180
+E 371 372 180
