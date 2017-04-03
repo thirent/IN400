@@ -1,0 +1,2 @@
+yolo/xd/lama.txt;19;d
+mais/oui/c/est/clair;42;c
