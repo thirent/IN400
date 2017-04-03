@@ -67,10 +67,7 @@ void lancement2()
 	
 	chemin = pcc(gare1,gare2,&temps);
 	
-	char chemin_cpy[strlen(chemin)];
-	strcpy(chemin_cpy,chemin);
-	
-	printf("%s\n",chemin);
+	//printf("%s\n",chemin);
 	
 	char** portions = reperage_chemin(chemin,strlen(chemin)/5,recup_ligne(),1);
 	
@@ -84,6 +81,5 @@ void lancement2()
 	if(secondes)printf("%d s",secondes);
 	printf("\n");
 	
-	//deplacement_ecran(0,chemin_cpy);
 	deplacement_ecran(0,portions);
 }

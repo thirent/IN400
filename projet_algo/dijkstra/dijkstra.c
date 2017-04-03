@@ -126,7 +126,7 @@ char* dijkstra(int** matrice, int depart, int arrivee,int* temps)
 	
 	int chemin_tmp2[i];
 		
-	char* chemin = malloc((i*5)*sizeof(char));
+	char* chemin = malloc((i*5+1)*sizeof(char));
 	
 	tmp=i-1;
 	
@@ -139,7 +139,9 @@ char* dijkstra(int** matrice, int depart, int arrivee,int* temps)
 	{
 		sprintf(&chemin[tmp*5],"%04d ",chemin_tmp2[tmp]);
 	}
-		
+	
+	chemin[tmp*5] = '\0';
+	
 	//printf("%s\n",chemin);
 	
 	*temps = distance[arrivee];
@@ -148,13 +150,13 @@ char* dijkstra(int** matrice, int depart, int arrivee,int* temps)
 }
 
 char* pcc(int depart, int arrivee,int* temps)
-{	
+{
 	int temps_tmp,tmp,i;
 	char* chemin;
 	char* chemin_tmp;
 	
 	int** matrice = creation_graphe();
-		
+	
 	chemin = dijkstra(matrice,depart,arrivee,temps);
 	
 	i = depart - 1;
@@ -170,7 +172,7 @@ char* pcc(int depart, int arrivee,int* temps)
 		}
 		i--;
 	}
-		
+	
 	i = depart + 1;
 	while((i<nbr_station)&&(meme_gare(i,depart)))
 	{
