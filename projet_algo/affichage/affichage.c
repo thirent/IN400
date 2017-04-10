@@ -126,9 +126,6 @@ SDL_Surface* dezoom_vf(SDL_Surface *Surface,int z_lvl,int recouvrement)
 
 void draw_rectangle(SDL_Surface** Surface,int x, int y,int cote,Uint32 pixel)
 {
-	//Uint32 pixel;
-	//pixel = SDL_MapRGBA((*Surface)->format,COULEUR);
-	
 	int i,j;
 	for(i=x-(cote/2);i<=x+(cote/2);i++)
 	{
@@ -178,6 +175,7 @@ void draw_line(SDL_Surface** Surface,int x1, int y1, int x2, int y2, int epaisse
 		}
 	}
 }
+
 void dessine_chemin(SDL_Surface** Surface,char* chemin,Uint32 pixel)
 {	
 	int i=0,j,x1,y1,x2,y2;
@@ -221,12 +219,17 @@ void dessine_portions(SDL_Surface** Surface,char** portions)
 		}
 		pixel = SDL_MapRGB((*Surface)->format,r,g,b);
 		dessine_chemin(Surface,portions[i],pixel);
+		
+		free(portions[i]);
+		
 		i++;r=0;g=0;b=0;
 	}
+	
+	free(portions);
 }
 
 void deplacement_ecran(int mode, ...)
-{
+{	
 	int* depart;int* arrivee;char** portions;
 	
 	va_list va;
@@ -243,7 +246,7 @@ void deplacement_ecran(int mode, ...)
 	}
 	
 	va_end(va);
-	
+		
 	SDL_Init(SDL_INIT_VIDEO);
 	
 	const SDL_VideoInfo* info = SDL_GetVideoInfo();
@@ -252,21 +255,21 @@ void deplacement_ecran(int mode, ...)
 	
 	SDL_Surface* image = SDL_LoadBMP("plan-metro-paris-2017.bmp");
 	SDL_Surface* ecran;
-	
+		
 	if(mode == 0)dessine_portions(&image,portions);
-	
+		
 	int z_lvl_max = 1,recouvrement = 0;
 	while((((image->w/(z_lvl_max-recouvrement))+(image->w%(z_lvl_max-recouvrement) != 0)) > resolution_x)||(((image->h/(z_lvl_max-recouvrement))+(image->h%(z_lvl_max-recouvrement) != 0)) > resolution_y)) z_lvl_max++;
 	
 	SDL_Surface* image_z[z_lvl_max];
 	
 	int i;
-	
+		
 	for(i=0;i<z_lvl_max;i++)
 	{
 		image_z[i] = dezoom_vf(image,i+1,0);
 	}
-	
+		
 	ecran = SDL_SetVideoMode(image_z[z_lvl_max - 1]->w,image_z[z_lvl_max - 1]->h,32,SDL_HWSURFACE);
 	
 	SDL_Rect position,position_copie;position.x=0;position.y=0;
@@ -278,7 +281,7 @@ void deplacement_ecran(int mode, ...)
 	SDL_Event event;
 	int continuer = 1,continuer_2 = 1,zoom = z_lvl_max - 1;
 	int x_ini,y_ini;
-	
+		
 	while(continuer)
 	{
 		SDL_WaitEvent(&event);
@@ -324,9 +327,7 @@ void deplacement_ecran(int mode, ...)
 						break;
 					case SDL_BUTTON_LEFT:
 						if(mode == 1)
-						{
-							//printf("%d %d\n",(event.button.x + position.x) * (zoom + 1),(event.button.y + position.y) * (zoom + 1));
-							
+						{							
 							*depart = reconnaissance_gare((event.button.x - position.x) * (zoom + 1),(event.button.y - position.y) * (zoom + 1));
 							if(*depart != -1)
 							{
@@ -392,8 +393,7 @@ void deplacement_ecran(int mode, ...)
 				break;
 		}
 	}
-	
-	
+		
 	for(i=0;i<z_lvl_max;i++) SDL_FreeSurface(image_z[i]);
 	SDL_FreeSurface(image);
 	SDL_FreeSurface(ecran);

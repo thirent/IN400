@@ -134,7 +134,6 @@ char** reperage_chemin(char* chemin, int longueur, char** ligne, int pere, ...)
 				if(strcmp(n_chaine(chemin,longueur,j),n_chaine(ligne[i],longueur,k)) == 0)
 				{
 					//~ printf("%s\n",n_chaine(chemin,longueur,j));
-					//~ printf("%s\n",n_chaine(ligne[i],longueur,k));
 										
 					strcpy(buf,n_chaine(chemin,longueur,j));
 					
@@ -152,17 +151,22 @@ char** reperage_chemin(char* chemin, int longueur, char** ligne, int pere, ...)
 					
 					if(strlen(&chemin[j*5+longueur*5])/5 !=0)reperage_chemin(&chemin[j*5+longueur*5],strlen(&chemin[j*5+longueur*5])/5,ligne,0,portions,indice);
 					
-					k=ligne_len+1-longueur;
-					j=chemin_len+1-longueur;
-					i=nbr_ligne+5;
+					//k=ligne_len+1-longueur;
+					//j=chemin_len+1-longueur;
+					//i=nbr_ligne+5;
+					goto fin;
 				}
 			}
 		}
 	}
 	
-	if((i < nbr_ligne+5)&&(strlen(chemin)/5 != 0))reperage_chemin(chemin,longueur-1,ligne,0,portions,indice);
+	//if((i < nbr_ligne+5)&&(strlen(chemin)/5 != 0))reperage_chemin(chemin,longueur-1,ligne,0,portions,indice);
+	reperage_chemin(chemin,longueur-1,ligne,0,portions,indice);
+	fin:
 	
 	fclose(fic_ligne);
+	
+	if(pere == 1)free(indice);
 	
 	return portions;
 }

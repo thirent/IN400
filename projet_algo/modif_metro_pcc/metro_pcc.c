@@ -40,9 +40,7 @@ void lancement1()
 	system("clear");
 	
 	chemin = pcc(gare1,gare2,&temps);
-	
-	//printf("%s\n",chemin);
-	
+		
 	reperage_chemin(chemin,strlen(chemin)/5,recup_ligne(),1);
 		
 	heures = temps / 3600;
@@ -62,9 +60,7 @@ void lancement2()
 	char* chemin;
 	
 	deplacement_ecran(1,&gare1,&gare2);
-	
-	//system("clear");
-	
+		
 	chemin = pcc(gare1,gare2,&temps);
 	
 	//printf("%s\n",chemin);

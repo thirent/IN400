@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../creation_graphe/creation_graphe.h"
 
 #define nbr_station 384
 #define t_max 100
@@ -165,10 +166,13 @@ char* pcc(int depart, int arrivee,int* temps)
 		chemin_tmp = dijkstra(matrice,i,arrivee,&temps_tmp);
 		if(temps_tmp < (*temps))
 		{
-			//printf("-%d:%d\n",i,temps_tmp);
 			free(chemin);
 			chemin = chemin_tmp;
 			*(temps)=temps_tmp;
+		}
+		else
+		{
+			free(chemin_tmp);
 		}
 		i--;
 	}
@@ -179,13 +183,22 @@ char* pcc(int depart, int arrivee,int* temps)
 		chemin_tmp = dijkstra(matrice,i,arrivee,&temps_tmp);
 		if(temps_tmp < (*temps))
 		{
-			//printf("+%d:%d\n",i,temps_tmp);
 			free(chemin);
 			chemin = chemin_tmp;
 			*(temps)=temps_tmp;
 		}
+		else
+		{
+			free(chemin_tmp);
+		}
 		i++;
 	}
-		
+	
+	for(i=0;i<nbr_station;i++)
+	{
+		free(matrice[i]);
+	}
+	free(matrice);
+	
 	return chemin;
 }

@@ -16,7 +16,7 @@ vide:
 	gcc -c -o ./compil/creation_graphe.o ../creation_graphe/creation_graphe.c 
 	
 
-./compil/dijkstra.o: ../dijkstra/dijkstra.c
+./compil/dijkstra.o: ./compil/creation_graphe.o ../dijkstra/dijkstra.c
 	gcc -c -o ./compil/dijkstra.o ../dijkstra/dijkstra.c
 	
 
