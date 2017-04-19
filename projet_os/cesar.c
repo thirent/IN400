@@ -23,6 +23,15 @@ typedef struct
 	int deb, fin, decalage;
 }arg;
 
+typedef struct
+{
+	arg argument;
+	pthread_t tid;
+	struct thread_elem* addr;
+}thread_elem;
+
+typedef thread_elem* thread_liste;
+
 int nombre_ligne(char* path)
 {
 	int fd = open(path,O_RDONLY);
@@ -45,7 +54,7 @@ instruction* recup_inst(char* nom_fic,int nbr_ligne)
 	
 	int taille_max,taille,pos,signe;
 	
-	instruction* inst = malloc((nbr_ligne + 1)*sizeof(instruction));
+	instruction* inst = malloc((nbr_ligne)*sizeof(instruction));
 	
 	for(i=0;i<nbr_ligne;i++)
 	{
@@ -81,9 +90,6 @@ instruction* recup_inst(char* nom_fic,int nbr_ligne)
 		while((read(fd,&c,sizeof(char)) != 0) && (c != '\n'));
 	}
 	
-	inst[i].path = malloc(sizeof(char));
-	inst[i].path[0] = ';';
-	
 	close(fd);
 	
 	return inst;
@@ -92,25 +98,39 @@ instruction* recup_inst(char* nom_fic,int nbr_ligne)
 void* decalage_mot(void* argument)
 {
 	arg* a = (arg*)argument;
-	int i,c;
+	int i,c,d;
 	
 	for(i=a->deb;i <= a->fin;i++)
 	{
 		c = a->chaine[i];
-		c = (c>90)?c-25:c-25-6;
-		c = (51 + c - a->decalage) % 52;
-		c = (c>25)?c+25:c+25+6;
-		a->chaine[i] = c;
+		d = a->decalage;
+		
+		a->chaine[i] = ((c>='A')&&(c<='Z'))?('Z'+(c-'A'-d))%('Z'+1):
+		(((c>='a')&&(c<='z'))?('z'+(c-'a'-d))%('z'+1):a->chaine[i]);
 	}
 	
 	return NULL;
+}
+
+void insertion_debut(thread_liste* liste)
+{
+	thread_elem* d = malloc(sizeof(thread_elem));
+	d->addr = (*liste)->addr;
+	*liste = d;
+}
+
+void suppression_debut(thread_liste* liste)
+{
+	thread_elem* d = *liste;
+	*liste = (*liste)->addr;
+	free(d);
 }
 
 int main(int argc, char** argv)
 {
 	if(argc == 1)exit(0);
 	
-	int nbr_ligne = nombre_ligne(argv[1]),i,reste;
+	int nbr_ligne = nombre_ligne(argv[1]),i,j,reste;
 	pid_t pid[nbr_ligne];
 	instruction* inst = recup_inst(argv[1],nbr_ligne);
 	int pipes[nbr_ligne][2];
@@ -138,7 +158,8 @@ int main(int argc, char** argv)
 		}
 		for(i=0;i<nbr_ligne;i++)
 		{
-			waitpid(pid[i],NULL,0);
+			//waitpid(pid[i],NULL,0);
+			wait(&i);
 			
 			while((reste = read(pipes[i][0],buf,tmax)) != 0) write(STDOUT_FILENO,buf,reste);
 		}
@@ -146,13 +167,19 @@ int main(int argc, char** argv)
 	
 	else //fils
 	{
+		for(j=0;j<i;j++)
+		{
+			close(pipes[j][1]);
+			close(pipes[j][0]);
+		}
 		close(pipes[i][0]);
 		
-		int fd = open(inst[i].path,O_RDONLY),taille_chaine = tmax+1, pos = 0, j, k = 0, nbr_mot_max = tmax, nbr_mot = 0;
+		int fd = open(inst[i].path,O_RDONLY),taille_chaine = tmax+1, pos = 0, j, k = 0/*, nbr_mot_max = tmax, nbr_mot = 0*/;
 		
 		char* chaine = malloc(taille_chaine*sizeof(char));
 		
-		while((reste = read(pipes[i][0],&buf[pos],tmax)) != 0)
+		//while((reste = read(pipes[i][0],&buf[pos],tmax)) != 0)
+		while((reste = read(fd,&buf[pos],tmax)) != 0)
 		{
 			pos += reste;
 			if(pos >= taille_chaine -1)
@@ -162,7 +189,11 @@ int main(int argc, char** argv)
 			}
 		}
 		
-		arg* args = malloc(nbr_mot * sizeof(arg));
+		
+		
+		
+		
+		/*arg* args = malloc(nbr_mot * sizeof(arg));
 		pthread_t* tid = malloc(nbr_mot * sizeof(pthread_t));
 		
 		for(j=0;j<pos;j++)
@@ -189,14 +220,46 @@ int main(int argc, char** argv)
 				args = realloc(args,nbr_mot_max * sizeof(arg));
 				tid = realloc(tid,nbr_mot_max * sizeof(pthread_t));
 			}
+		}*/
+		
+		thread_liste liste = NULL;
+		
+		for(j=0;j<pos;j++)
+		{
+			if(!(((chaine[i] >= 65)&&(chaine[i] <=90)) || ((chaine[i] >= 97)&&(chaine[i] <=122))))
+			{
+				insertion_debut(&liste);
+				
+				(liste->argument).deb = k;
+				(liste->argument).fin = j;
+				(liste->argument).chaine = chaine;
+				(liste->argument).decalage = inst[i].decalage;
+				
+				//appel des thread avec l'argument : &args[i]
+				
+				pthread_create(&(liste->tid),NULL,decalage_mot,&(liste->argument));
+				
+				//appel des thread avec l'argument : &args[i]
+				
+				k=j+1;
+			}
+			
 		}
 		
-		for(k=0;k<nbr_mot;k++)
+		while(liste != NULL)
 		{
-			pthread_join(tid[k],NULL);
+			pthread_join(liste->tid,NULL);
+			suppression_debut(&liste);
 		}
+		
+		
+		
+		
+		
 		
 		close(fd);
+		
+		exit(i);
 	}
 	
 	return EXIT_SUCCESS;
