@@ -1,2 +1,2 @@
 ./fic_1.txt;2;c
-./fic_2.txt;2;d
+./fic_2.txt;2;c

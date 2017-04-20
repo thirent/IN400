@@ -163,17 +163,21 @@ int main(int argc, char** argv)
 	//printf("nbr ligne : %d\n",nbr_ligne);
 	
 	if(i == nbr_ligne) //parent
-	{
+	{		
 		for(i=0;i<nbr_ligne;i++)
 		{
 			close(pipes[i][1]);
 		}
-
-		for(i=0;i<nbr_ligne;i++)
+		
+		for(j=0;j<nbr_ligne;j++)
 		{
+			/*printf("%d\n",j);
 			wait(&i);
-
-			while((reste = read(pipes[i][0],buf,tmax)) != 0)
+			printf("%d\n",i);*/
+			
+			waitpid(pid[j],NULL,0);
+			
+			while((reste = read(pipes[j][0],buf,tmax)) != 0)
 			{
 				write(STDOUT_FILENO,buf,reste);
 			}
@@ -202,7 +206,7 @@ int main(int argc, char** argv)
 				chaine = realloc(chaine,taille_chaine*sizeof(char));
 			}
 		}
-		
+				
 		chaine[pos] = '\n';
 		
 		//printf("%d\n",pos);
@@ -234,13 +238,13 @@ int main(int argc, char** argv)
 			}
 			
 		}
-		
+				
 		while(liste != NULL)
 		{
 			pthread_join(liste->tid,NULL);
 			suppression_debut(&liste);
 		}
-		
+				
 		if(inst[i].sens == 'c')
 		{
 			char n_path[strlen(inst[i].path) + 7];
@@ -264,9 +268,8 @@ int main(int argc, char** argv)
 		else if(inst[i].sens == 'd')
 		{
 			write(pipes[i][1],chaine,strlen(chaine)+1);
-			//printf("%s\n",chaine);
 		}
-		
+				
 		close(fd);
 		
 		exit(i);
