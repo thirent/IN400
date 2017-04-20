@@ -116,9 +116,13 @@ void* decalage_mot(void* argument)
 
 void insertion_debut(thread_liste* liste)
 {
+	printf("1\n");
 	thread_elem* d = malloc(sizeof(thread_elem));
-	d->addr = (*liste)->addr;
+	printf("2\n");
+	d->addr = *liste;
+	printf("3\n");
 	*liste = d;
+	printf("4\n");
 }
 
 void suppression_debut(thread_liste* liste)
@@ -150,7 +154,7 @@ int main(int argc, char** argv)
 	}	
 	fin_boucle:
 	
-	
+	//printf("nbr ligne : %d\n",nbr_ligne);
 	
 	if(i == nbr_ligne) //parent
 	{
@@ -158,11 +162,15 @@ int main(int argc, char** argv)
 		{
 			close(pipes[i][1]);
 		}
+
 		for(i=0;i<nbr_ligne;i++)
 		{
 			wait(&i);
-			
-			while((reste = read(pipes[i][0],buf,tmax)) != 0) write(STDOUT_FILENO,buf,reste);
+
+			while((reste = read(pipes[i][0],buf,tmax)) != 0)
+			{
+				write(STDOUT_FILENO,buf,reste);
+			}
 		}
 	}
 	
@@ -179,8 +187,7 @@ int main(int argc, char** argv)
 		
 		char* chaine = malloc(taille_chaine*sizeof(char));
 		
-		//while((reste = read(pipes[i][0],&buf[pos],tmax)) != 0)
-		while((reste = read(fd,&buf[pos],tmax)) != 0)
+		while((reste = read(fd,&chaine[pos],tmax)) != 0)
 		{
 			pos += reste;
 			if(pos >= taille_chaine -1)
@@ -190,11 +197,15 @@ int main(int argc, char** argv)
 			}
 		}
 		
-		thread_liste liste = NULL;
+		//printf("%d\n",pos);
+		//printf("%s\n",chaine);
 		
+		thread_liste liste = NULL;
+				
 		for(j=0;j<pos;j++)
 		{
-			if(!(((chaine[i] >= 65)&&(chaine[i] <=90)) || ((chaine[i] >= 97)&&(chaine[i] <=122))))
+			printf("%d\n",chaine[j]);
+			if(!(((chaine[j] >= 65)&&(chaine[j] <=90)) || ((chaine[j] >= 97)&&(chaine[j] <=122))))
 			{
 				insertion_debut(&liste);
 				
@@ -202,6 +213,8 @@ int main(int argc, char** argv)
 				(liste->argument).fin = j;
 				(liste->argument).chaine = chaine;
 				(liste->argument).decalage = inst[i].decalage;
+				
+				//printf("%d %d %s %d\n",k,j,chaine,inst[i].decalage);
 				
 				//appel des thread avec l'argument : &args[i]
 				
@@ -228,6 +241,17 @@ int main(int argc, char** argv)
 			int fd2 = open(n_path,O_CREAT|O_WRONLY,0700);
 			write(fd2,chaine,strlen(chaine)*sizeof(char));
 			close(fd2);
+			
+			//"le fichier : " = 13
+			//" a bien ete crypte." = 19
+			// total = 32
+			
+			char msg[strlen(inst[i].path)+32];
+			strcpy(msg,"le fichier : ");
+			strcpy(msg,inst[i].path);
+			strcpy(msg," a bien ete crypte.");
+			
+			write(fd,msg,strlen(msg));
 		}
 		else if(inst[i].sens == 'd')
 		{
