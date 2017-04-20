@@ -105,10 +105,14 @@ void* decalage_mot(void* argument)
 	for(i=a->deb;i <= a->fin;i++)
 	{
 		c = a->chaine[i];
+		printf("%c\n",c);
 		d = a->decalage;
+		//printf("%d\n",d);
 		
 		a->chaine[i] = ((c>='A')&&(c<='Z'))?('Z'+(c-'A'-d))%('Z'+1):
 		(((c>='a')&&(c<='z'))?('z'+(c-'a'-d))%('z'+1):a->chaine[i]);
+		
+		printf("%c\n",a->chaine[i]);
 	}
 	
 	return NULL;
@@ -116,13 +120,9 @@ void* decalage_mot(void* argument)
 
 void insertion_debut(thread_liste* liste)
 {
-	printf("1\n");
 	thread_elem* d = malloc(sizeof(thread_elem));
-	printf("2\n");
 	d->addr = *liste;
-	printf("3\n");
 	*liste = d;
-	printf("4\n");
 }
 
 void suppression_debut(thread_liste* liste)
@@ -197,14 +197,16 @@ int main(int argc, char** argv)
 			}
 		}
 		
+		chaine[pos] = '\0';
+		
 		//printf("%d\n",pos);
 		//printf("%s\n",chaine);
 		
 		thread_liste liste = NULL;
 				
-		for(j=0;j<pos;j++)
+		for(j=0;j<=pos;j++)
 		{
-			printf("%d\n",chaine[j]);
+			//printf("%d\n",chaine[j]);
 			if(!(((chaine[j] >= 65)&&(chaine[j] <=90)) || ((chaine[j] >= 97)&&(chaine[j] <=122))))
 			{
 				insertion_debut(&liste);
@@ -214,7 +216,7 @@ int main(int argc, char** argv)
 				(liste->argument).chaine = chaine;
 				(liste->argument).decalage = inst[i].decalage;
 				
-				//printf("%d %d %s %d\n",k,j,chaine,inst[i].decalage);
+				printf("%d %d %s %d\n",k,j,chaine,inst[i].decalage);
 				
 				//appel des thread avec l'argument : &args[i]
 				
