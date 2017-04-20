@@ -105,14 +105,20 @@ void* decalage_mot(void* argument)
 	for(i=a->deb;i <= a->fin;i++)
 	{
 		c = a->chaine[i];
-		printf("%c\n",c);
+		//printf("%c\n",c);
 		d = a->decalage;
 		//printf("%d\n",d);
 		
-		a->chaine[i] = ((c>='A')&&(c<='Z'))?('Z'+(c-'A'-d))%('Z'+1):
-		(((c>='a')&&(c<='z'))?('z'+(c-'a'-d))%('z'+1):a->chaine[i]);
+		//~ a->chaine[i] = ((c>='A')&&(c<='Z'))?('Z'+(c-'A'+d))%('Z'+1):
+		//~ (((c>='a')&&(c<='z'))?(('z'+1+(c-'a'+d))%('z'+1))+'a':a->chaine[i]);
 		
-		printf("%c\n",a->chaine[i]);
+		a->chaine[i] = ((c>='A')&&(c<='Z'))?
+		((c-'A'+d > 0)?c+d:c-'A'+d+'Z')
+		:(((c>='a')&&(c<='z'))?
+		((c-'a'+d > 0)?c+d:c-'a'+d+'z')
+		:a->chaine[i]);
+		
+		//printf("%c\n",a->chaine[i]);
 	}
 	
 	return NULL;
@@ -147,7 +153,7 @@ int main(int argc, char** argv)
 	{
 		pipe(pipes[i]);
 		
-		printf("%s %d %c\n",inst[i].path,inst[i].decalage,inst[i].sens);
+		//printf("%s %d %c\n",inst[i].path,inst[i].decalage,inst[i].sens);
 		
 		pid[i] = fork();
 		if(pid[i] == 0) goto fin_boucle;
@@ -216,7 +222,7 @@ int main(int argc, char** argv)
 				(liste->argument).chaine = chaine;
 				(liste->argument).decalage = inst[i].decalage;
 				
-				printf("%d %d %s %d\n",k,j,chaine,inst[i].decalage);
+				//printf("%d %d %s %d\n",k,j,chaine,inst[i].decalage);
 				
 				//appel des thread avec l'argument : &args[i]
 				
@@ -257,7 +263,8 @@ int main(int argc, char** argv)
 		}
 		else if(inst[i].sens == 'd')
 		{
-			printf("%s\n",chaine);
+			write(fd,chaine,strlen(chaine)+1);
+			//printf("%s\n",chaine);
 		}
 		
 		close(fd);
