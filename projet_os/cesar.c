@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <pthread.h>
+#include <string.h>
 
 #define tmax 1024
 #define tmot 30
@@ -142,7 +143,7 @@ int main(int argc, char** argv)
 	{
 		pipe(pipes[i]);
 		
-		//printf("%s %d %c\n",inst[i].path,inst[i].decalage,inst[i].sens);
+		printf("%s %d %c\n",inst[i].path,inst[i].decalage,inst[i].sens);
 		
 		pid[i] = fork();
 		if(pid[i] == 0) goto fin_boucle;
@@ -219,10 +220,19 @@ int main(int argc, char** argv)
 			suppression_debut(&liste);
 		}
 		
-		
-		
-		
-		
+		if(inst[i].sens == 'c')
+		{
+			char n_path[strlen(inst[i].path) + 7];
+			strcpy(n_path,inst[i].path);
+			strcpy(&n_path[strlen(inst[i].path)],"_cypher");
+			int fd2 = open(n_path,O_CREAT|O_WRONLY,0700);
+			write(fd2,chaine,strlen(chaine)*sizeof(char));
+			close(fd2);
+		}
+		else if(inst[i].sens == 'd')
+		{
+			printf("%s\n",chaine);
+		}
 		
 		close(fd);
 		
