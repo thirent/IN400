@@ -186,11 +186,11 @@ int main(int argc, char** argv)
 	
 	else //fils
 	{
-		/*for(j=0;j<i;j++)
+		for(j=0;j<i;j++)
 		{
 			close(pipes[j][1]);
 			close(pipes[j][0]);
-		}*/
+		}
 		close(pipes[i][0]);
 		
 		int fd = open(inst[i].path,O_RDONLY),taille_chaine = tmax+1, pos = 0, j, k = 0/*, nbr_mot_max = tmax, nbr_mot = 0*/;
