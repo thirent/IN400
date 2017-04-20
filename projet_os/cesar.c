@@ -23,13 +23,14 @@ typedef struct
 	int deb, fin, decalage;
 }arg;
 
-typedef struct
+struct thread_elem
 {
 	arg argument;
 	pthread_t tid;
 	struct thread_elem* addr;
-}thread_elem;
+};
 
+typedef struct thread_elem thread_elem;
 typedef thread_elem* thread_liste;
 
 int nombre_ligne(char* path)
@@ -158,7 +159,6 @@ int main(int argc, char** argv)
 		}
 		for(i=0;i<nbr_ligne;i++)
 		{
-			//waitpid(pid[i],NULL,0);
 			wait(&i);
 			
 			while((reste = read(pipes[i][0],buf,tmax)) != 0) write(STDOUT_FILENO,buf,reste);
@@ -188,39 +188,6 @@ int main(int argc, char** argv)
 				chaine = realloc(chaine,taille_chaine*sizeof(char));
 			}
 		}
-		
-		
-		
-		
-		
-		/*arg* args = malloc(nbr_mot * sizeof(arg));
-		pthread_t* tid = malloc(nbr_mot * sizeof(pthread_t));
-		
-		for(j=0;j<pos;j++)
-		{
-			if(!(((chaine[i] >= 65)&&(chaine[i] <=90)) || ((chaine[i] >= 97)&&(chaine[i] <=122))))
-			{
-				args[nbr_mot].deb = k;
-				args[nbr_mot].fin = j;
-				args[nbr_mot].chaine = chaine;
-				args[nbr_mot].decalage = inst[i].decalage;
-				
-				//appel des thread avec l'argument : &args[i]
-				
-				pthread_create(&tid[i],NULL,decalage_mot,&args[i]);
-				
-				//appel des thread avec l'argument : &args[i]
-				
-				k=j;
-				nbr_mot++;
-			}
-			if(nbr_mot >= nbr_mot_max)
-			{
-				nbr_mot_max *=2;
-				args = realloc(args,nbr_mot_max * sizeof(arg));
-				tid = realloc(tid,nbr_mot_max * sizeof(pthread_t));
-			}
-		}*/
 		
 		thread_liste liste = NULL;
 		
@@ -264,9 +231,6 @@ int main(int argc, char** argv)
 	
 	return EXIT_SUCCESS;
 }
-
-//write(STDOUT_FILENO, msg, strlen(msg));
-
 //http://mtodorovic.developpez.com/linux/programmation-avancee/?page=page_5
 
 
