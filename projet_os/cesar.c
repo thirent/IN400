@@ -149,7 +149,8 @@ int main(int argc, char** argv)
 		
 		pid[i] = fork();
 		if(pid[i] == 0) goto fin_boucle;
-	}	
+	}
+	free(inst);
 	fin_boucle:
 	
 	//printf("nbr ligne : %d\n",nbr_ligne);
@@ -194,8 +195,6 @@ int main(int argc, char** argv)
 		lseek(fd,0,SEEK_SET);
 		
 		while((reste = read(fd,&chaine[pos],tmax)) != 0)pos += reste;
-		
-		
 		
 		//printf("%d\n",pos);
 		//printf("%s\n",chaine);
@@ -257,13 +256,15 @@ int main(int argc, char** argv)
 		{
 			write(pipes[i][1],chaine,strlen(chaine)+1);
 		}
+		
+		free(chaine);
 				
 		close(fd);
 		
-		exit(i);
+		
 	}
 	
-	return EXIT_SUCCESS;
+	exit(0);
 }
 //http://mtodorovic.developpez.com/linux/programmation-avancee/?page=page_5
 
