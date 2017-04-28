@@ -105,9 +105,9 @@ void* decalage_mot(void* argument)
 		//printf("%d\n",d);
 		
 		a->chaine[i] = ((c>='A')&&(c<='Z'))?
-		((c-'A'+d > 0)?c+d:c-'A'+d+'Z')
+		((c-'A'+d >= 0)?c+d:c-'A'+d+'Z')
 		:(((c>='a')&&(c<='z'))?
-		((c-'a'+d > 0)?c+d:c-'a'+d+'z')
+		((c-'a'+d >= 0)?c+d:c-'a'+d+'z')
 		:c);
 		
 		//printf("%c\n",a->chaine[i]);
