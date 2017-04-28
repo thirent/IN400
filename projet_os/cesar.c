@@ -104,14 +104,11 @@ void* decalage_mot(void* argument)
 		d = a->decalage;
 		//printf("%d\n",d);
 		
-		//~ a->chaine[i] = ((c>='A')&&(c<='Z'))?('Z'+(c-'A'+d))%('Z'+1):
-		//~ (((c>='a')&&(c<='z'))?(('z'+1+(c-'a'+d))%('z'+1))+'a':a->chaine[i]);
-		
 		a->chaine[i] = ((c>='A')&&(c<='Z'))?
 		((c-'A'+d > 0)?c+d:c-'A'+d+'Z')
 		:(((c>='a')&&(c<='z'))?
 		((c-'a'+d > 0)?c+d:c-'a'+d+'z')
-		:a->chaine[i]);
+		:c);
 		
 		//printf("%c\n",a->chaine[i]);
 	}
@@ -188,31 +185,17 @@ int main(int argc, char** argv)
 		}
 		close(pipes[i][0]);
 		
-		int fd = open(inst[i].path,O_RDONLY),taille_chaine = tmax+1, pos = 0, j, k = 0/*, nbr_mot_max = tmax, nbr_mot = 0*/;
+		int fd = open(inst[i].path,O_RDONLY),taille_chaine = tmax+1, pos = 0, j, k = 0;
 		
-		/*
-		char* chaine = malloc(taille_chaine*sizeof(char));
-		
-		while((reste = read(fd,&chaine[pos],tmax)) != 0)
-		{
-			pos += reste;
-			if(pos >= taille_chaine -1)
-			{
-				taille_chaine *= 2;
-				chaine = realloc(chaine,taille_chaine*sizeof(char));
-			}
-		}
-		
-		chaine[pos] = '\0';
-		*/
-		
-		while((reste = read(fd,NULL,tmax)) != 0)taille_chaine += reste;
+		while((reste = read(fd,buf,tmax)) != 0)taille_chaine += reste;
 		
 		char* chaine = malloc(taille_chaine*sizeof(char));
 		
 		lseek(fd,0,SEEK_SET);
 		
 		while((reste = read(fd,&chaine[pos],tmax)) != 0)pos += reste;
+		
+		
 		
 		//printf("%d\n",pos);
 		//printf("%s\n",chaine);
