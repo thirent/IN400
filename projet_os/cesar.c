@@ -74,6 +74,7 @@ instruction* recup_inst(char* nom_fic,int nbr_ligne)
 		
 		lseek(fd,sizeof(char),SEEK_CUR);
 		
+		
 		while((read(fd,&c,sizeof(char)) != 0) && (c != ';'))
 		{
 			if(c == '-') signe = -1;
@@ -154,8 +155,6 @@ int main(int argc, char** argv)
 	}	
 	fin_boucle:
 	
-	exit(0);
-	
 	//printf("nbr ligne : %d\n",nbr_ligne);
 	
 	if(i == nbr_ligne) //parent
@@ -191,6 +190,7 @@ int main(int argc, char** argv)
 		
 		int fd = open(inst[i].path,O_RDONLY),taille_chaine = tmax+1, pos = 0, j, k = 0/*, nbr_mot_max = tmax, nbr_mot = 0*/;
 		
+		/*
 		char* chaine = malloc(taille_chaine*sizeof(char));
 		
 		while((reste = read(fd,&chaine[pos],tmax)) != 0)
@@ -202,8 +202,17 @@ int main(int argc, char** argv)
 				chaine = realloc(chaine,taille_chaine*sizeof(char));
 			}
 		}
-				
-		chaine[pos] = '\n';
+		
+		chaine[pos] = '\0';
+		*/
+		
+		while((reste = read(fd,NULL,tmax)) != 0)taille_chaine += reste;
+		
+		char* chaine = malloc(taille_chaine*sizeof(char));
+		
+		lseek(fd,0,SEEK_SET);
+		
+		while((reste = read(fd,&chaine[pos],tmax)) != 0)pos += reste;
 		
 		//printf("%d\n",pos);
 		//printf("%s\n",chaine);
