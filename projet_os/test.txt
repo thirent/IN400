@@ -1,0 +1,3 @@
+./test1.txt;45;d
+./dvhskqbjsqsfbvdsi.txt;42;c
+./dvsbjdvbosjdvljfsdnbvjsebuihdbfdujqsvfhbshbvqsjbvspofhvsbvjsdqoevsfvsdobvsdjbvsoeibvsdhvsuovbqdfouvbdjvbsoivsjdbvdu.txt;39;d
