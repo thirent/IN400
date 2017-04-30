@@ -1,2 +1,2 @@
-./fic1.txt_cypher;-5;d
-./fic1.txt;5;c
+./fic1.txt;31;c
+./fic1.txt_cypher;-31;d
