@@ -46,6 +46,7 @@ instruction* recup_inst(char* nom_fic,int nbr_ligne)
 			if(c == '-') signe = -1;
 			else inst[i].decalage = (inst[i].decalage*10) + (c - '0');
 		}
+		inst[i].decalage %= ('Z'-'A'+1);
 		inst[i].decalage *= signe;
 		
 		read(fd,&(inst[i].sens),sizeof(char));
@@ -68,7 +69,7 @@ void* decalage_mot(void* argument)
 		c = a->chaine[i];
 		
 		d = a->decalage;
-		d = (d>=0)?d%('Z'-'A'+1):-((-d)%('Z'-'A'+1));
+		//~ d = (d>=0)?d%('Z'-'A'+1):-((-d)%('Z'-'A'+1));
 		
 		a->chaine[i] = ((c>='A')&&(c<='Z'))?
 		((c-'A'+d >= 0)?c+d:c-'A'+d+'Z')
