@@ -1,3 +1,6 @@
+//PEPIN Thibaut
+//PAXENT Laurent
+
 #include "cesar.h"
 
 int nombre_ligne(char* path)
@@ -67,17 +70,13 @@ void* decalage_mot(void* argument)
 	for(i=a->deb;i <= a->fin;i++)
 	{
 		c = a->chaine[i];
-		
 		d = a->decalage;
-		//~ d = (d>=0)?d%('Z'-'A'+1):-((-d)%('Z'-'A'+1));
 		
 		a->chaine[i] = ((c>='A')&&(c<='Z'))?
 		((c-'A'+d >= 0)?c+d:c-'A'+d+'Z')
 		:(((c>='a')&&(c<='z'))?
 		((c-'a'+d >= 0)?c+d:c-'a'+d+'z')
 		:c);
-		
-		//printf("%c\n",a->chaine[i]);
 	}
 	
 	return NULL;
@@ -111,16 +110,13 @@ int main(int argc, char** argv)
 	for(i=0;i<nbr_ligne;i++)
 	{
 		pipe(pipes[i]);
-		
-		printf("%s %d %c\n",inst[i].path,inst[i].decalage,inst[i].sens);
-		
+				
 		pid[i] = fork();
 		if(pid[i] == 0) goto fin_boucle;
 	}
 	free(inst);
 	fin_boucle:
 	
-	//printf("nbr ligne : %d\n",nbr_ligne);
 	
 	if(i == nbr_ligne) //parent
 	{		
@@ -130,17 +126,17 @@ int main(int argc, char** argv)
 		}
 		
 		for(j=0;j<nbr_ligne;j++)
-		{
-			/*printf("%d\n",j);
-			wait(&i);
-			printf("%d\n",i);*/
-			
+		{	
 			waitpid(pid[j],NULL,0);
 			
 			while((reste = read(pipes[j][0],buf,tmax)) != 0)
 			{
 				write(STDOUT_FILENO,buf,reste);
 			}
+		}
+		for(i=0;i<nbr_ligne;i++)
+		{
+			close(pipes[0][1]);
 		}
 	}
 	
@@ -163,14 +159,11 @@ int main(int argc, char** argv)
 		
 		while((reste = read(fd,&chaine[pos],tmax)) != 0)pos += reste;
 		
-		//printf("%d\n",pos);
-		//printf("%s\n",chaine);
-		
+
 		thread_liste liste = NULL;
 				
 		for(j=0;j<=pos;j++)
 		{
-			//printf("%d\n",chaine[j]);
 			if(!(((chaine[j] >= 65)&&(chaine[j] <=90)) || ((chaine[j] >= 97)&&(chaine[j] <=122))))
 			{
 				insertion_debut(&liste);
@@ -180,13 +173,7 @@ int main(int argc, char** argv)
 				(liste->argument).chaine = chaine;
 				(liste->argument).decalage = inst[i].decalage;
 				
-				//printf("%d %d %s %d\n",k,j,chaine,inst[i].decalage);
-				
-				//appel des thread avec l'argument : &args[i]
-				
 				pthread_create(&(liste->tid),NULL,decalage_mot,&(liste->argument));
-				
-				//appel des thread avec l'argument : &args[i]
 				
 				k=j+1;
 			}
@@ -209,8 +196,8 @@ int main(int argc, char** argv)
 			close(fd2);
 			
 			//"le fichier : " = 13
-			//" a bien ete crypte." = 19
-			// total = 32
+			//" a bien ete crypte.\n" = 20
+			// total = 33 caractères
 			
 			char msg[strlen(inst[i].path)+33];
 			strcpy(msg,"le fichier : ");
@@ -225,15 +212,14 @@ int main(int argc, char** argv)
 		}
 		
 		free(chaine);
+		free(inst);
 				
 		close(fd);
-		
-		
+		close(pipes[i][1]);
 	}
 	
 	exit(0);
 }
-//http://mtodorovic.developpez.com/linux/programmation-avancee/?page=page_5
 
 
 
